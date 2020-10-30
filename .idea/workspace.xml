@@ -54,8 +54,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/DataVisualization" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\DataVisualization" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="BasicSteps" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -100,7 +105,8 @@
       <workItem from="1603900486562" duration="188000" />
       <workItem from="1603972528229" duration="708000" />
       <workItem from="1603988377581" duration="13954000" />
-      <workItem from="1604003169048" duration="151000" />
+      <workItem from="1604003169048" duration="595000" />
+      <workItem from="1604071459308" duration="8808000" />
     </task>
     <servers />
   </component>
@@ -136,22 +142,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603900300923" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604002538198">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604080435320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604002538198" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604002538198">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604080435320" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604080435320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604002538198" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604002538198">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604080435320" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604080435320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604002538198" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604002538198">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604080435320" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604080435320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604002538198" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604080435320" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1603991767966">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -172,12 +178,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603972754562" />
-    <state x="431" y="145" key="search.everywhere.popup" timestamp="1603900204039">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1604076689886">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603900204039" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604076689886" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BasketDataHub$BasicSteps.coverage" NAME="BasicSteps Coverage Results" MODIFIED="1604002538182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataVisualization" />
+    <SUITE FILE_PATH="coverage/BasketDataHub$BasicSteps.coverage" NAME="BasicSteps Coverage Results" MODIFIED="1604078665073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataVisualization" />
   </component>
 </project>
