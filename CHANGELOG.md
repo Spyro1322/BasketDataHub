@@ -21,3 +21,13 @@
 * Spent hours to limitate the data only for the previous season(still to be done) 
 
 * Next, must seperate his stats for each season so as to study his improvement, maybe get dates of games from other csv and group them. 
+
+### 2020-10-30
+* Delete missing values from games_details.csv
+
+* Plot different averages of Giannis's stats since his beginning
+
+* It was difficult to choose games per season only by GAME_ID, better add date from different csv too. Got the dataframe(season_df) for all games of the past season.
+
+* Thinking about making a function that given a player's name will produce stats-table for 2019-2020 season. 
+
