@@ -29,5 +29,13 @@
 
 * It was difficult to choose games per season only by GAME_ID, better add date from different csv too. Got the dataframe(season_df) for all games of the past season.
 
-* Thinking about making a function that given a player's name will produce stats-table for 2019-2020 season. 
+* Thinking about making a function that given a player's name will produce stats-table for 2019-2020 season.
 
+### 2020-10-31
+* Difficulties in choosing only last season's stats. It occured to me that it would be simpler to figure out some total statistics from the entire dataset. For example, top scorers etc.
+
+* Started implementing function for csv's missing values and overview. Saved plots with missing-values freqeuncy per category.  
+
+* We began plotting "easy" graphs for the players. These will be saved for future use. 
+
+* After many tests I managed to design a good plot for top_scorers,passers,rebounders. Checked some of Giannis's stats. 
