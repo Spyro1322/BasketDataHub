@@ -58,11 +58,12 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\DataVisualization\Graphs" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\DataVisualization" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\Data" />
+      <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\DataVisualization\Graphs" />
       <recent name="C:\Users\spira\Documents\GitHub\BasketDataHub\DataVisualization" />
     </key>
   </component>
@@ -113,6 +114,7 @@
       <workItem from="1604071459308" duration="8808000" />
       <workItem from="1604137653549" duration="17527000" />
       <workItem from="1604160249146" duration="43000" />
+      <workItem from="1604228722078" duration="66000" />
     </task>
     <servers />
   </component>
