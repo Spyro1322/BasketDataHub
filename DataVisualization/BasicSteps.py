@@ -8,8 +8,8 @@ from IPython.display import display
 
 
 # Dataframes - dfs
-games_details = pd.read_csv('./games_details.csv')
-games = pd.read_csv('./games.csv')
+games_details = pd.read_csv('../Data/games_details.csv')
+games = pd.read_csv('../Data/games.csv')
 
 # Missing values with plot
 def print_missing_values(df):
