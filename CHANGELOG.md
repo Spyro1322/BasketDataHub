@@ -38,4 +38,9 @@
 
 * We began plotting "easy" graphs for the players. These will be saved for future use. 
 
-* After many tests I managed to design a good plot for top_scorers,passers,rebounders. Checked some of Giannis's stats. 
+* After many tests I managed to design a good plot for top_scorers,passers,rebounders. Checked some of Giannis's stats.
+
+### 2020-11-01
+* Tried to change what I was recommended about my plots. I want to add a general, simpler "template" for plotting, let's call it blindplot(hopefully reusable!).
+
+* Begin 2nd week with fresh ideas! 
