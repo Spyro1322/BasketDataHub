@@ -43,4 +43,10 @@
 ### 2020-11-01
 * Tried to change what I was recommended about my plots. I want to add a general, simpler "template" for plotting, let's call it blindplot(hopefully reusable!).
 
-* Begin 2nd week with fresh ideas! 
+* Begin 2nd week with fresh ideas!
+
+### 2020-11-02
+* Studied some things about radar plot to check if it is good for our dataset. Tested some graphs and saved them for possible future use. We saw that Lebron James was the most dominant player since 2004. So, I decided to make some more comparisons based on his stats. 
+Later, we could do same things with different players each time.
+
+* Compared stats between 2 players too. 
