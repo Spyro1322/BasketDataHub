@@ -57,21 +57,21 @@ games_details = games_details.dropna()
 
 # Players with the most minutes played
 # Firstly, convert minutes to second to easier our work
-# def convert_min(x):
-#     if pd.isna(x):
-#         return 0
-#     x = str(x).split(':')
-#     if len(x) < 2:
-#         return int(x[0])
-#     else:
-#         return int(x[0])*60+int(x[1])
-#
-# df_tmp = games_details[['PLAYER_NAME', 'MIN']]
-# df_tmp.loc[:,'MIN'] = df_tmp['MIN'].apply(convert_min)
-# agg = df_tmp.groupby('PLAYER_NAME').agg('sum').reset_index()
-# agg.columns = ['PLAYER_NAME', 'Number of seconds played']
-#
-# blind_plot(agg, column='Number of seconds played', label_col='PLAYER_NAME', max_plot=10)
+def convert_min(x):
+    if pd.isna(x):
+        return 0
+    x = str(x).split(':')
+    if len(x) < 2:
+        return int(x[0])
+    else:
+        return int(x[0])*60+int(x[1])
+
+df_tmp = games_details[['PLAYER_NAME', 'MIN']]
+df_tmp.loc[:,'MIN'] = df_tmp['MIN'].apply(convert_min)
+agg = df_tmp.groupby('PLAYER_NAME').agg('sum').reset_index()
+agg.columns = ['PLAYER_NAME', 'Number of seconds played']
+
+blind_plot(agg, column='Number of seconds played', label_col='PLAYER_NAME', max_plot=10)
 
 # Top 20 scorers since 2004
 # top_scorers = games_details.groupby(by='PLAYER_NAME')['PTS'].sum().sort_values(ascending =False).head(20).reset_index()
@@ -187,17 +187,17 @@ def radar_plot(ax, df, max_val=1):
     # Add legend
     plt.legend(loc=0, bbox_to_anchor=(0.1, 0.1), prop={'size': 13})
 
-# fig, ax = plt.subplots(figsize=(18, 9))
-#
-# ax = plt.subplot(121, polar=True)
-# ax.set_title('Percentage statistics')
-# radar_plot(ax=ax, df=stats_prct, max_val=1)
-#
-# ax = plt.subplot(122, polar=True)
-# ax.set_title('Others statistics')
-# radar_plot(ax=ax, df=stats_other, max_val=10)
-#
-# plt.show()
+fig, ax = plt.subplots(figsize=(18, 9))
+
+ax = plt.subplot(121, polar=True)
+ax.set_title('Percentage statistics')
+radar_plot(ax=ax, df=stats_prct, max_val=1)
+
+ax = plt.subplot(122, polar=True)
+ax.set_title('Others statistics')
+radar_plot(ax=ax, df=stats_other, max_val=10)
+
+plt.show()
 
 # Function for players' stats
 def get_players_stats(player_one, player_two):
