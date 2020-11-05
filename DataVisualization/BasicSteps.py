@@ -11,6 +11,7 @@ from IPython.display import display
 # Dataframes - dfs
 games_details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
+teams = pd.read_csv('../Data/teams.csv')
 
 # Missing values with plot
 def print_missing_values(df):
@@ -74,16 +75,16 @@ agg.columns = ['PLAYER_NAME', 'Number of seconds played']
 blind_plot(agg, column='Number of seconds played', label_col='PLAYER_NAME', max_plot=10)
 
 # Top 20 scorers since 2004
-# top_scorers = games_details.groupby(by='PLAYER_NAME')['PTS'].sum().sort_values(ascending =False).head(20).reset_index()
-# plt.figure(figsize=(15,10))
-# plt.xlabel('POINTS',fontsize=15)
-# plt.ylabel('PLAYER_NAME',fontsize=15)
-# plt.title('Top 20 Scorers in the NBA League',fontsize = 20)
-# ax = sns.barplot(x=top_scorers['PTS'],y = top_scorers['PLAYER_NAME'])
-# for i ,(value,name) in enumerate (zip(top_scorers['PTS'],top_scorers['PLAYER_NAME'])):
-#     ax.text(value, i-.05,f'{value:,.0f}',size = 10,ha='left',va='center')
-# ax.set(xlabel='POINTS',ylabel='PLAYER_NAME')
-# plt.show()
+top_scorers = games_details.groupby(by='PLAYER_NAME')['PTS'].sum().sort_values(ascending =False).head(20).reset_index()
+plt.figure(figsize=(15,10))
+plt.xlabel('POINTS',fontsize=15)
+plt.ylabel('PLAYER_NAME',fontsize=15)
+plt.title('Top 20 Scorers in the NBA League',fontsize = 20)
+ax = sns.barplot(x=top_scorers['PTS'],y = top_scorers['PLAYER_NAME'])
+for i ,(value,name) in enumerate (zip(top_scorers['PTS'],top_scorers['PLAYER_NAME'])):
+    ax.text(value, i-.05,f'{value:,.0f}',size = 10,ha='left',va='center')
+ax.set(xlabel='POINTS',ylabel='PLAYER_NAME')
+plt.show()
 #
 # def top_20_scorers(player_name):
 #     top_scorers = games_details.groupby(by='player_name')['PTS'].sum().sort_values(ascending =False).head(20).reset_index()
@@ -246,6 +247,16 @@ player_two = 'Giannis Antetokounmpo'
 stats_prct, stats_other = get_players_stats(player_one=player_one, player_two=player_two)
 
 show_player_stats_comparison(stats_prct, stats_other)
+
+# Maybe process some Team overall stats as wins,losses etc.
+winning_teams = np.where(games['HOME_TEAM_WINS'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
+winning_teams = pd.DataFrame(winning_teams, columns=['TEAM_ID'])
+winning_teams = winning_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
+winning_teams.columns = ['TEAM NAME', 'Number of wins']
+
+blind_plot(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)
+
+
 
 
 # Top 20 passers since 2004
