@@ -52,6 +52,9 @@ Later, we could do same things with different players each time.
 * Compared stats between 2 players too. 
 
 ### 2020-11-03
-* More studying, less coding. Searched for new ideas to implement(to start as of tomorrow). I have read some things about predicting models(with naive, MLP, linear regression), most of them are from the papers in our drive . Maybe try starting something with our data. 
+* More studying, less coding. Searched for new ideas to implement(to start as of tomorrow). I have read some things about predicting models(with naive, MLP, linear regression), most of them are from the papers in our drive. Maybe try starting something with our data. 
 
 * Added some more lines in BasicSteps.
+
+### 2020-11-05
+* Some more visulizations. Added teams.csv in data directory. 
