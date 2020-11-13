@@ -11,6 +11,7 @@ games_details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
 
+
 # Missing values with plot
 def print_missing_values(df):
     df_null = pd.DataFrame(len(df) - df.notnull().sum(), columns=['Count'])
@@ -27,10 +28,12 @@ def print_missing_values(df):
     plt.title('Percentage of missing values in columns')
     plt.show()
 
+
 # A general overview
 def dataset_overview(df, df_name):
     display(df.describe().T)
     print_missing_values(df)
+
 
 # Function for plotting(hopefully reusable)
 def blind_plot(df, column, label_col=None, max_plot=5):
@@ -47,12 +50,14 @@ def blind_plot(df, column, label_col=None, max_plot=5):
     plt.title(f'Top {max_plot} of {column}')
     plt.show()
 
+
 dataset_overview(games_details, 'games_details')
 dataset_overview(games, 'games')
 
 # Delete unnecessary columns
 games_details.drop(['GAME_ID','TEAM_ID','PLAYER_ID','START_POSITION','COMMENT','TEAM_ABBREVIATION'],axis = 1,inplace= True)
 games_details = games_details.dropna()
+
 
 # Players with the most minutes played
 # Firstly, convert minutes to second to easier our work
@@ -64,6 +69,7 @@ def convert_min(x):
         return int(x[0])
     else:
         return int(x[0])*60+int(x[1])
+
 
 df_tmp = games_details[['PLAYER_NAME', 'MIN']]
 df_tmp.loc[:,'MIN'] = df_tmp['MIN'].apply(convert_min)
@@ -79,7 +85,7 @@ plt.xlabel('POINTS',fontsize=15)
 plt.ylabel('PLAYER_NAME',fontsize=15)
 plt.title('Top 20 Scorers in the NBA League',fontsize = 20)
 ax = sns.barplot(x=top_scorers['PTS'],y = top_scorers['PLAYER_NAME'])
-for i ,(value,name) in enumerate (zip(top_scorers['PTS'],top_scorers['PLAYER_NAME'])):
+for i, (value, name) in enumerate (zip(top_scorers['PTS'],top_scorers['PLAYER_NAME'])):
     ax.text(value, i-.05,f'{value:,.0f}',size = 10,ha='left',va='center')
 ax.set(xlabel='POINTS',ylabel='PLAYER_NAME')
 plt.show()
@@ -97,29 +103,31 @@ plt.show()
 #     plt.show()
 
 stats_cols = {
-    'FGM':'Field Goals Made',
-    'FGA':'Field Goals Attempted',
-    'FG_PCT':'Field Goal Percentage',
-    'FG3M':'Three Pointers Made',
-    'FG3A':'Three Pointers Attempted',
-    'FG3_PCT':'Three Point Percentage',
-    'FTM':'Free Throws Made',
-    'FTA':'Free Throws Attempted',
-    'FT_PCT':'Free Throw Percentage',
-    'OREB':'Offensive Rebounds',
-    'DREB':'Defensive Rebounds',
-    'REB':'Rebounds',
-    'AST':'Assists',
-    'TO':'Turnovers',
-    'STL':'Steals',
-    'BLK':'Blocked Shots',
-    'PF':'Personal Foul',
-    'PTS':'Points',
-    'PLUS_MINUS':'Plus-Minus'
+    'FGM': 'Field Goals Made',
+    'FGA': 'Field Goals Attempted',
+    'FG_PCT': 'Field Goal Percentage',
+    'FG3M': 'Three Pointers Made',
+    'FG3A': 'Three Pointers Attempted',
+    'FG3_PCT': 'Three Point Percentage',
+    'FTM': 'Free Throws Made',
+    'FTA': 'Free Throws Attempted',
+    'FT_PCT': 'Free Throw Percentage',
+    'OREB': 'Offensive Rebounds',
+    'DREB': 'Defensive Rebounds',
+    'REB': 'Rebounds',
+    'AST': 'Assists',
+    'TO': 'Turnovers',
+    'STL': 'Steals',
+    'BLK': 'Blocked Shots',
+    'PF': 'Personal Foul',
+    'PTS': 'Points',
+    'PLUS_MINUS': 'Plus-Minus'
 }
+
 
 def agg_on_columns(df, agg_var, operation=['mean']):
     return df[agg_var].agg(operation)
+
 
 # Remove players that didn't played at a game
 df_tmp = games_details[~games_details['MIN'].isna()]
