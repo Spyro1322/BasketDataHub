@@ -57,4 +57,10 @@ Later, we could do same things with different players each time.
 * Added some more lines in BasicSteps.
 
 ### 2020-11-05
-* Some more visulizations. Added teams.csv in data directory. 
+* Some more visulizations. Added teams.csv in data directory.  
+
+### 2020-11-12
+* After some help managed to solve a few problems regarding our project IDE. Got ready to start writing some code again. 
+
+* Added a requirements.txt and write a short description of our project in the README.md . Tried to delete some warnings.
+Tomorrow I am going to split BasicSteps in more files so as to make it easier processing my plots. 
