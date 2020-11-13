@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-import sys, argparse, csv
-import csv
 import matplotlib.pyplot as plt
 from math import pi
 import seaborn as sns
