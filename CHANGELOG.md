@@ -46,13 +46,15 @@
 * Begin 2nd week with fresh ideas!
 
 ### 2020-11-02
-* Studied some things about radar plot to check if it is good for our dataset. Tested some graphs and saved them for possible future use. We saw that Lebron James was the most dominant player since 2004. So, I decided to make some more comparisons based on his stats. 
+* Studied some things about radar plot to check if it is good for our dataset. Tested some graphs and saved them for possible future use. 
+We saw that Lebron James was the most dominant player since 2004. So, I decided to make some more comparisons based on his stats. 
 Later, we could do same things with different players each time.
 
 * Compared stats between 2 players too. 
 
 ### 2020-11-03
-* More studying, less coding. Searched for new ideas to implement(to start as of tomorrow). I have read some things about predicting models(with naive, MLP, linear regression), most of them are from the papers in our drive. Maybe try starting something with our data. 
+* More studying, less coding. Searched for new ideas to implement(to start as of tomorrow). I have read some things about 
+predicting models(with naive, MLP, linear regression), most of them are from the papers in our drive. Maybe try starting something with our data. 
 
 * Added some more lines in BasicSteps.
 
@@ -64,3 +66,11 @@ Later, we could do same things with different players each time.
 
 * Added a requirements.txt and write a short description of our project in the README.md . Tried to delete some warnings.
 Tomorrow I am going to split BasicSteps in more files so as to make it easier processing my plots. 
+
+### 2020-11-16
+* After I split my BasicSteps.py, I decided to add some more files so as to visualize team stats as well(points,assists,
+rebounds etc.).
+
+* It would be interesting to check relationships and correlations between statistical categories and how these relationships
+have effect on teams' wins and overall performance(to be done!!!).
+ 
