@@ -73,4 +73,12 @@ rebounds etc.).
 
 * It would be interesting to check relationships and correlations between statistical categories and how these relationships
 have effect on teams' wins and overall performance(to be done!!!).
+
+### 2020-11-19
+* I have spent the last couple of days studying some ideas about making my visualizations more dynamic. That means I am 
+trying to create functions which will take some arguments and plot the data we ask them to. I have found some difficulties
+but the goal is to make these work until next Friday.
+
+* Furthermore, I intend to complete my code about the data correlations and statistics' relationships that I mentioned
+the day before.
  
