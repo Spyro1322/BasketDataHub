@@ -81,4 +81,7 @@ but the goal is to make these work until next Friday.
 
 * Furthermore, I intend to complete my code about the data correlations and statistics' relationships that I mentioned
 the day before.
- 
+
+### 2020-11-20
+* Correlation, distribution, scatter and density plots for the games_details.csv . Reusable functions that can be applied 
+to each dataset we have.
