@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import IPython.display as display
-
 
 # Dataframes - dfs
 games_details = pd.read_csv('../Data/games_details.csv')
@@ -29,7 +27,7 @@ def print_missing_values(df):
 
 # A general overview
 def dataset_overview(df, df_name):
-    display(df.describe().T)
+    # display(df.describe())
     print_missing_values(df)
 
 
@@ -52,8 +50,74 @@ def blind_plot(df, column, label_col=None, max_plot=5):
     plt.show()
 
 
+# Distribution graphs of column data
+def column_distribution(df, nShown, nPerRow):
+    nunique = df.nunique()
+    # For displaying purposes, pick columns that
+    # have between 1 and 100 unique values
+    df = df[[col for col in df if nunique[col] > 1 and nunique[col] < 100]]
+    nRow, nCol = df.shape
+    columnNames = list(df)
+    nGraphRow = (nCol + nPerRow - 1) / nPerRow
+    plt.figure(num = None, figsize = (6 * nPerRow, 8 * nGraphRow), dpi = 80, facecolor = 'w', edgecolor = 'k')
+    for i in range(min(nCol, nShown)):
+        plt.subplot(nGraphRow, nPerRow, i + 1)
+        columnDf = df.iloc[:, i]
+        if not np.issubdtype(type(columnDf.iloc[0]), np.number):
+            valueCounts = columnDf.value_counts()
+            valueCounts.plot.bar()
+        else:
+            columnDf.hist()
+        plt.ylabel('counts')
+        plt.xticks(rotation = 90)
+        plt.title(f'{columnNames[i]} (column {i})')
+    plt.tight_layout(pad = 1.0, w_pad = 1.0, h_pad = 1.0)
+    plt.show()
+
+
+# Correlation matrix
+def correlation_matrix(df, graphWidth):
+    filename = df
+    # drop columns with NaN
+    df = df.dropna('columns')
+    # keep columns where there are more than 1 unique values
+    df = df[[col for col in df if df[col].nunique() > 1]]
+    if df.shape[1] < 2:
+        print(f'No correlation plots shown: The number of non-NaN or constant columns ({df.shape[1]}) is less than 2')
+        return
+    corr = df.corr()
+    plt.figure(num=None, figsize=(graphWidth, graphWidth), dpi=80, facecolor='w', edgecolor='k')
+    corrMat = plt.matshow(corr, fignum = 1)
+    plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
+    plt.yticks(range(len(corr.columns)), corr.columns)
+    plt.gca().xaxis.tick_bottom()
+    plt.colorbar(corrMat)
+    plt.title(f'Correlation Matrix for {filename}', fontsize=15)
+    plt.show()
+
+
+# Scatter and density plots
+def scatter_matrix(df, plotSize, textSize):
+    # keep only numerical columns
+    df = df.select_dtypes(include =[np.number])
+    df = df.dropna('columns')
+    df = df[[col for col in df if df[col].nunique() > 1]]
+    columnNames = list(df)
+    df = df[columnNames]
+    ax = pd.plotting.scatter_matrix(df, alpha=0.75, figsize=[plotSize, plotSize], diagonal='kde')
+    corrs = df.corr().values
+    for i, j in zip(*plt.np.triu_indices_from(ax, k = 1)):
+        ax[i, j].annotate('Corr. coef = %.3f' % corrs[i, j], (0.8, 0.2), xycoords='axes fraction', ha='center', va='center', size=textSize)
+    plt.suptitle('Scatter and Density Plot')
+    plt.show()
+
+
 dataset_overview(games_details, 'games_details')
 dataset_overview(games, 'games')
+
+# column_distribution(games_details, 10, 5)
+correlation_matrix(games_details, 8)
+# scatter_matrix(games_details, 20, 10)
 
 # Delete unnecessary columns
 games_details.drop(['GAME_ID', 'TEAM_ID', 'PLAYER_ID', 'START_POSITION', 'COMMENT', 'TEAM_ABBREVIATION'], axis=1, inplace=True)
