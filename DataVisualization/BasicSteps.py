@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Dataframes - dfs
 games_details = pd.read_csv('../Data/games_details.csv')
@@ -115,14 +116,18 @@ def scatter_matrix(df, plotSize, textSize):
 dataset_overview(games_details, 'games_details')
 dataset_overview(games, 'games')
 
-# column_distribution(games_details, 10, 5)
-correlation_matrix(games_details, 8)
-# scatter_matrix(games_details, 20, 10)
-
 # Delete unnecessary columns
 games_details.drop(['GAME_ID', 'TEAM_ID', 'PLAYER_ID', 'START_POSITION', 'COMMENT', 'TEAM_ABBREVIATION'], axis=1, inplace=True)
 games_details = games_details.dropna()
 
+column_distribution(games_details, 10, 5)
+correlation_matrix(games_details, 8)
+scatter_matrix(games_details, 20, 10)
+
+plt.figure(figsize = (14,7))
+sns.heatmap(games_details.corr(),cmap='coolwarm',annot=True)
+sns.heatmap(games.corr(),cmap='coolwarm',annot=True)
+sns.heatmap(teams.corr(),cmap='coolwarm',annot=True)
 
 # Players with the most minutes played
 # Firstly, convert minutes to second to easier our work
