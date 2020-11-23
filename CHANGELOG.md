@@ -85,3 +85,8 @@ the day before.
 ### 2020-11-20
 * Correlation, distribution, scatter and density plots for the games_details.csv . Reusable functions that can be applied 
 to each dataset we have.
+
+### 2020-11-23
+* Some more correlations among game statistics. 
+
+* Started transforming our existing files with a more 'functional' look.
