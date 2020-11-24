@@ -90,3 +90,9 @@ to each dataset we have.
 * Some more correlations among game statistics. 
 
 * Started transforming our existing files with a more 'functional' look.
+
+### 2020-11-24
+* Spent some time preparing for my upcoming brief presentation about my project. Collected the plots I want to use and 
+organised my flow.
+
+* Presentation is ready! Drum roll until Friday.
