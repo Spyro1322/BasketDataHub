@@ -125,7 +125,7 @@ def get_players_stats(player_one, player_two):
     # Define key statistics columns, one for percentage variable and one for other important statistics
     prct_var = ['FG_PCT', 'FG3_PCT', 'FT_PCT']
     other_var = ['REB', 'AST', 'STL', 'PF', 'BLK']
-    # Create a specific dataset for LeBron James
+
     player_one_df = df_tmp[df_tmp['PLAYER_NAME'] == player_one]
     player_two_df = df_tmp[df_tmp['PLAYER_NAME'] == player_two]
 
