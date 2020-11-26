@@ -60,7 +60,7 @@ def column_distribution(df, nShown, nPerRow):
     nRow, nCol = df.shape
     columnNames = list(df)
     nGraphRow = (nCol + nPerRow - 1) / nPerRow
-    plt.figure(num = None, figsize = (6 * nPerRow, 8 * nGraphRow), dpi = 80, facecolor = 'w', edgecolor = 'k')
+    plt.figure(num=None, figsize=(6 * nPerRow, 8 * nGraphRow), dpi=80, facecolor='w', edgecolor='k')
     for i in range(min(nCol, nShown)):
         plt.subplot(nGraphRow, nPerRow, i + 1)
         columnDf = df.iloc[:, i]
@@ -70,9 +70,9 @@ def column_distribution(df, nShown, nPerRow):
         else:
             columnDf.hist()
         plt.ylabel('counts')
-        plt.xticks(rotation = 90)
+        plt.xticks(rotation=90)
         plt.title(f'{columnNames[i]} (column {i})')
-    plt.tight_layout(pad = 1.0, w_pad = 1.0, h_pad = 1.0)
+    plt.tight_layout(pad=1.0, w_pad=1.0, h_pad=1.0)
     plt.show()
 
 
@@ -88,7 +88,7 @@ def correlation_matrix(df, graphWidth):
         return
     corr = df.corr()
     plt.figure(num=None, figsize=(graphWidth, graphWidth), dpi=80, facecolor='w', edgecolor='k')
-    corrMat = plt.matshow(corr, fignum = 1)
+    corrMat = plt.matshow(corr, fignum=1)
     plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
     plt.yticks(range(len(corr.columns)), corr.columns)
     plt.gca().xaxis.tick_bottom()
@@ -100,14 +100,14 @@ def correlation_matrix(df, graphWidth):
 # Scatter and density plots
 def scatter_matrix(df, plotSize, textSize):
     # keep only numerical columns
-    df = df.select_dtypes(include =[np.number])
+    df = df.select_dtypes(include=[np.number])
     df = df.dropna('columns')
     df = df[[col for col in df if df[col].nunique() > 1]]
     columnNames = list(df)
     df = df[columnNames]
     ax = pd.plotting.scatter_matrix(df, alpha=0.75, figsize=[plotSize, plotSize], diagonal='kde')
     corrs = df.corr().values
-    for i, j in zip(*plt.np.triu_indices_from(ax, k = 1)):
+    for i, j in zip(*plt.np.triu_indices_from(ax, k=1)):
         ax[i, j].annotate('Corr. coef = %.3f' % corrs[i, j], (0.8, 0.2), xycoords='axes fraction', ha='center', va='center', size=textSize)
     plt.suptitle('Scatter and Density Plot')
     plt.show()
@@ -124,13 +124,14 @@ column_distribution(games_details, 10, 5)
 correlation_matrix(games_details, 8)
 scatter_matrix(games_details, 20, 10)
 
-plt.figure(figsize = (14,7))
-sns.heatmap(games_details.corr(),cmap='coolwarm',annot=True)
-sns.heatmap(games.corr(),cmap='coolwarm',annot=True)
-sns.heatmap(teams.corr(),cmap='coolwarm',annot=True)
+plt.figure(figsize=(14, 7))
+sns.heatmap(games_details.corr(), cmap='coolwarm', annot=True)
+sns.heatmap(games.corr(), cmap='coolwarm', annot=True)
+sns.heatmap(teams.corr(), cmap='coolwarm', annot=True)
 
 # Players with the most minutes played
 # Firstly, convert minutes to second to easier our work
+
 def convert_min(x):
     if pd.isna(x):
         return 0
@@ -155,4 +156,3 @@ winning_teams = winning_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID'
 winning_teams.columns = ['TEAM NAME', 'Number of wins']
 
 blind_plot(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)
-
