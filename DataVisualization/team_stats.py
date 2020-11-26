@@ -29,46 +29,46 @@ games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 # Plotting
 fig, ax = plt.subplots()
 
-# Since games.csv has different columns for home&visitor teams, we also use them separately
+# Since games.csv has different columns for home&visitor teams, we use them separately too
 
 # Points
-# sns.boxplot(x="HOME_TEAM_ID", y="PTS_home", data=games_est)
-# plt.xlabel("HOME TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("PTS SCORED")
-# plt.show()
-#
-# sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
-# plt.xlabel("AWAY TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("PTS SCORED ")
-# plt.show()
-#
+sns.boxplot(x="HOME_TEAM_ID", y="PTS_home", data=games_est)
+plt.xlabel("HOME TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("PTS SCORED")
+plt.show()
+
+sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
+plt.xlabel("AWAY TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("PTS SCORED ")
+plt.show()
+
 # # Assists
-# sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
-# plt.xlabel("HOME TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("AST MADE ")
-# plt.show()
-#
-# sns.boxplot(x="VISITOR_TEAM_ID", y="AST_away", data=games_est)
-# plt.xlabel("AWAY TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("AST MADE ")
-# plt.show()
-#
+sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
+plt.xlabel("HOME TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("AST MADE ")
+plt.show()
+
+sns.boxplot(x="VISITOR_TEAM_ID", y="AST_away", data=games_est)
+plt.xlabel("AWAY TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("AST MADE ")
+plt.show()
+
 # # Rebounds
-# sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
-# plt.xlabel("HOME TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("REB GRABBED ")
-# plt.show()
-#
-# sns.boxplot(x="VISITOR_TEAM_ID", y="REB_away", data=games_est)
-# plt.xlabel("AWAY TEAM")
-# plt.xticks(rotation=90)
-# plt.ylabel("REB GRABBED ")
-# plt.show()
+sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
+plt.xlabel("HOME TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("REB GRABBED ")
+plt.show()
+
+sns.boxplot(x="VISITOR_TEAM_ID", y="REB_away", data=games_est)
+plt.xlabel("AWAY TEAM")
+plt.xticks(rotation=90)
+plt.ylabel("REB GRABBED ")
+plt.show()
 
 # We can plot many more the same way but it is not necessary at this moment.
 
