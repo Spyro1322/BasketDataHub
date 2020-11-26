@@ -96,3 +96,9 @@ to each dataset we have.
 organised my flow.
 
 * Presentation is ready! Drum roll until Friday.
+
+### 2020-11-26
+* Made some small changes in my files(comments, unnecessary lines of code deleted).
+
+* I am pleased with most of my work so far. I have been trying to modify team_stats.py but ran into some issues. The results
+will be the same even if I decide to change the structure a bit. The other files both get the job done and look good. 
