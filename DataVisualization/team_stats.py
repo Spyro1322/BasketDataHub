@@ -6,6 +6,8 @@ import seaborn as sns
 
 # Check '18 - '19 different statistical categories for the teams
 # Dataframes - dfs, games.csv is interesting enough in combination with the others that have already been used
+
+
 games_details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
@@ -44,7 +46,7 @@ plt.xticks(rotation=90)
 plt.ylabel("PTS SCORED ")
 plt.show()
 
-# # Assists
+# Assists
 sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
 plt.xlabel("HOME TEAM")
 plt.xticks(rotation=90)
@@ -57,7 +59,7 @@ plt.xticks(rotation=90)
 plt.ylabel("AST MADE ")
 plt.show()
 
-# # Rebounds
+# Rebounds
 sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
 plt.xlabel("HOME TEAM")
 plt.xticks(rotation=90)
@@ -72,10 +74,11 @@ plt.show()
 
 # We can plot many more the same way but it is not necessary at this moment.
 
-# Pearson correlation function
+
 def pearson_r(x, y):
+    # Pearson correlation function
     # Compute correlation matrix: corr_mat
-    corr_mat=np.corrcoef(x, y)
+    corr_mat = np.corrcoef(x, y)
     return corr_mat[0, 1]
 
 # Plot a few correlations

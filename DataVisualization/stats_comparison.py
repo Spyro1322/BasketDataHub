@@ -1,6 +1,4 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-from math import pi
+from utilities import *
 
 # Dataframe
 games_details = pd.read_csv('../Data/games_details.csv')
@@ -66,43 +64,6 @@ stats_prct = rename_df(stats_prct, col_dict=stats_cols)
 stats_other = rename_df(stats_other, col_dict=stats_cols)
 
 
-# Radar plot tests
-def radar_plot(ax, df, max_val=1):
-    # number of variable
-    categories = list(df)
-    N = len(categories)
-
-    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-    angles = [n / float(N) * 2 * pi for n in range(N)]
-    angles += angles[:1]
-
-    # Draw one axe per variable + add labels labels yet
-    plt.xticks(angles[:-1], categories, color='black', size=12)
-
-    # Draw ylabels
-    ax.set_rlabel_position(0)
-    yticks = [max_val * i / 4 for i in range(1, 4)]
-    plt.yticks(yticks, [str(e) for e in yticks], color="grey", size=10)
-    plt.ylim(0, max_val)
-
-    # We are going to plot the first line of the data frame.
-    # But we need to repeat the first value to close the circular graph:
-    colors = ['b', 'r', 'g']
-    for i in range(len(df)):
-        values = df.values[i].flatten().tolist()
-        values += values[:1]
-        color = colors[i]
-
-        # Plot data
-        ax.plot(angles, values, linewidth=1, linestyle='solid', color=color, label=df.index[i])
-
-        # Fill area
-        ax.fill(angles, values, color, alpha=0.1)
-
-    # Add legend
-    plt.legend(loc=0, bbox_to_anchor=(0.1, 0.1), prop={'size': 13})
-
-
 fig = plt.subplots(figsize=(18, 9))
 ax = plt.subplot(121, polar=True)
 
@@ -116,8 +77,9 @@ radar_plot(ax=ax, df=stats_other, max_val=10)
 plt.show()
 
 
-# Function for players' stats
+
 def get_players_stats(player_one, player_two):
+    # Function for players' stats
     # Remove players that didn't played at a game
     df_tmp = games_details[~games_details['MIN'].isna()]
     del df_tmp['MIN']
@@ -145,6 +107,7 @@ def get_players_stats(player_one, player_two):
 
 
 def show_player_stats_comparison(stats_prct, stats_other):
+    # Stats of players
     fig, ax = plt.subplots(figsize=(18, 9))
 
     ax = plt.subplot(121, polar=True)

@@ -101,4 +101,9 @@ organised my flow.
 * Made some small changes in my files(comments, unnecessary lines of code deleted).
 
 * I am pleased with most of my work so far. I have been trying to modify team_stats.py but ran into some issues. The results
-will be the same even if I decide to change the structure a bit. The other files both get the job done and look good. 
+will be the same even if I decide to change the structure a bit. The other files both get the job done and look good.
+  
+### 2020-12-06
+* Improved the general look of our code files(more organised, "cleaned up").
+
+* Created a separate file 'utilities.py' for my reusable functions which are going to be called many more times.  
