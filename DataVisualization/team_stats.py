@@ -1,4 +1,5 @@
 import pandas as pd
+from utilities import *
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -6,8 +7,6 @@ import seaborn as sns
 
 # Check '18 - '19 different statistical categories for the teams
 # Dataframes - dfs, games.csv is interesting enough in combination with the others that have already been used
-
-
 games_details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
@@ -28,51 +27,69 @@ print(trans)
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
-# Plotting
-fig, ax = plt.subplots()
+def team_stats(df, column, label_col=None, max_plot=5):
+    # Plotting function for the main statistical categories in games.csv .
+    top_df = df.sort_values(column, ascending=False).head(max_plot)
+    height = top_df[column]
+    if label_col is None:
+        x = top_df.index
+    else:
+        x = top_df[label_col]
+    gold, silver, bronze, other = ('#FFA400', '#bdc3c7', '#cd7f32', '#3498db')
+    colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
+    fig, ax = plt.subplots(figsize=(18, 7))
+    ax.bar(x, height, color=colors)
+    plt.xticks(x, x, rotation=60)
+    plt.xlabel(label_col)
+    plt.ylabel(column)
+    plt.title(f'Top {max_plot} of {column}')
+    plt.show()
 
-# Since games.csv has different columns for home&visitor teams, we use them separately too
 
-# Points
-sns.boxplot(x="HOME_TEAM_ID", y="PTS_home", data=games_est)
-plt.xlabel("HOME TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("PTS SCORED")
-plt.show()
+# Maybe process some Team overall stats as wins,losses etc.
+winning_teams = np.where(games['HOME_TEAM_WINS'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
+winning_teams = pd.DataFrame(winning_teams, columns=['TEAM_ID'])
+winning_teams = winning_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
+winning_teams.columns = ['TEAM NAME', 'Number of wins']
 
-sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("PTS SCORED ")
-plt.show()
 
-# Assists
-sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
-plt.xlabel("HOME TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("AST MADE ")
-plt.show()
 
-sns.boxplot(x="VISITOR_TEAM_ID", y="AST_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("AST MADE ")
-plt.show()
 
-# Rebounds
-sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
-plt.xlabel("HOME TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("REB GRABBED ")
-plt.show()
 
-sns.boxplot(x="VISITOR_TEAM_ID", y="REB_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("REB GRABBED ")
-plt.show()
 
-# We can plot many more the same way but it is not necessary at this moment.
+
+    # sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
+    # plt.xlabel("AWAY TEAM")
+    # plt.xticks(rotation=90)
+    # plt.ylabel("PTS SCORED ")
+    # plt.show()
+    #
+    # # Assists
+    # sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
+    # plt.xlabel("HOME TEAM")
+    # plt.xticks(rotation=90)
+    # plt.ylabel("AST MADE ")
+    # plt.show()
+    #
+    # sns.boxplot(x="VISITOR_TEAM_ID", y="AST_away", data=games_est)
+    # plt.xlabel("AWAY TEAM")
+    # plt.xticks(rotation=90)
+    # plt.ylabel("AST MADE ")
+    # plt.show()
+    #
+    # # Rebounds
+    # sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
+    # plt.xlabel("HOME TEAM")
+    # plt.xticks(rotation=90)
+    # plt.ylabel("REB GRABBED ")
+    # plt.show()
+    #
+    # sns.boxplot(x="VISITOR_TEAM_ID", y="REB_away", data=games_est)
+    # plt.xlabel("AWAY TEAM")
+    # plt.xticks(rotation=90)
+    # plt.ylabel("REB GRABBED ")
+    # plt.show()
+
 
 
 def pearson_r(x, y):
@@ -113,3 +130,4 @@ for j in range(2):
 
 plt.show()
 
+team_stats(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)

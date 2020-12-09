@@ -107,3 +107,7 @@ will be the same even if I decide to change the structure a bit. The other files
 * Improved the general look of our code files(more organised, "cleaned up").
 
 * Created a separate file 'utilities.py' for my reusable functions which are going to be called many more times.  
+
+### 2020-12-09
+* The main concern is to improve team_stats.py as I was asked. It is going to be easier to find stats for any team given
+team abbreviation at first and then maybe based on the season we wish. This task is the most important until next week. 
