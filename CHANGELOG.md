@@ -110,4 +110,8 @@ will be the same even if I decide to change the structure a bit. The other files
 
 ### 2020-12-09
 * The main concern is to improve team_stats.py as I was asked. It is going to be easier to find stats for any team given
-team abbreviation at first and then maybe based on the season we wish. This task is the most important until next week. 
+team abbreviation at first and then maybe based on the season we wish. This task is the most important until next week.
+
+### 2020-12-10
+* Made a separate file for correlations between categories. Updated the utilities.py with a few new functions too. 
+Experimentation on team_stats.py .

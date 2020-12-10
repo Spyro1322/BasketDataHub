@@ -169,3 +169,9 @@ def radar_plot(ax, df, max_val=1):
     plt.legend(loc=0, bbox_to_anchor=(0.08, 0.08), prop={'size': 10})
 
 
+def pearson_r(x, y):
+    # Pearson correlation function
+    # Compute correlation matrix: corr_mat
+    corr_mat = np.corrcoef(x, y)
+    return corr_mat[0, 1]
+

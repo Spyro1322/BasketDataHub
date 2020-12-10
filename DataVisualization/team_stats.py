@@ -52,6 +52,10 @@ winning_teams = pd.DataFrame(winning_teams, columns=['TEAM_ID'])
 winning_teams = winning_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
 winning_teams.columns = ['TEAM NAME', 'Number of wins']
 
+high_scoring_teams = np.where(games['PTS_home'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
+high_scoring_teams = pd.DataFrame(high_scoring_teams, columns=['TEAM_ID'])
+high_scoring_teams = high_scoring_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
+high_scoring_teams.columns = ['TEAM NAME', 'Overall Points']
 
 
 
@@ -90,44 +94,5 @@ winning_teams.columns = ['TEAM NAME', 'Number of wins']
     # plt.ylabel("REB GRABBED ")
     # plt.show()
 
-
-
-def pearson_r(x, y):
-    # Pearson correlation function
-    # Compute correlation matrix: corr_mat
-    corr_mat = np.corrcoef(x, y)
-    return corr_mat[0, 1]
-
-# Plot a few correlations
-sns.scatterplot(x="PTS_home", y="AST_home", data=games_est, alpha=0.5)
-
-plt.xlabel("POINTS SCORED (HOME TEAMS)")
-plt.xticks(rotation=90)
-plt.ylabel("ASSIST SCORED (HOME TEAMS)")
-plt.show()
-
-print("Pearson correlation coefficient:", pearson_r(games_est["PTS_home"], games_est["AST_home"]))
-
-sns.scatterplot(x="PTS_away", y="AST_away", data=games_est, alpha=0.5)
-
-plt.xlabel("POINTS SCORED (AWAY TEAMS)")
-plt.xticks(rotation=90)
-plt.ylabel("ASSIST SCORED (AWAY TEAMS)")
-plt.show()
-
-print("Pearson correlation coefficient;", pearson_r(games_est["PTS_away"], games_est["AST_away"]))
-
-# Following the steps above we could study even more correlations in games.csv
-
-# Plot the relationship between HOME_TEAM_WINS and PTS,AST and REB scored by each team.
-sns.set(style="darkgrid")
-plot_list = ["PTS_home", "AST_home", "REB_home", "PTS_away", "AST_away", "REB_away"]
-
-fig, axes = plt.subplots(2, 3, figsize=(25, 10), sharex=True)
-for j in range(2):
-    for i, ax in enumerate(axes.flat):
-        sns.boxplot(x="HOME_TEAM_WINS", y=plot_list[i], data=games_est, ax=ax)
-
-plt.show()
-
-team_stats(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)
+# team_stats(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)
+team_stats(high_scoring_teams, column='Overall Points', label_col='TEAM NAME', max_plot=10)
