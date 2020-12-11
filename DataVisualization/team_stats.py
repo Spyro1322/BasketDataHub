@@ -47,15 +47,19 @@ def team_stats(stat, column, label_col=None, max_plot=5):
     else:
         x = top_df[label_col]
     gold, silver, bronze, other = ('#FFA400', '#bdc3c7', '#cd7f32', '#3498db')
-    colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
+    # colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
     fig, ax = plt.subplots(figsize=(18, 7))
-    ax.bar(x, height, color=colors)
-    plt.xticks(x, x, rotation=60)
+    # ax.bar(x, height, color=colors)
+    # plt.xticks(x, x, rotation=60)
     plt.xlabel(label_col)
     plt.ylabel(column)
     plt.title(f'Top {max_plot} of {column}')
+    # plt.show()
+    ax = sns.barplot(x, height)
+    # for i, (value, name) in enumerate(zip(team_cat, team_cat.columns)):
+    #     ax.text(value, i - .05, f'{value:,.0f}', size=10, ha='left', va='center')
+    ax.set(xlabel=label_col, ylabel=column)
     plt.show()
-
 
 # Maybe process some Team overall stats as wins,losses etc.
 # winning_teams = np.where(games['HOME_TEAM_WINS'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
@@ -103,4 +107,5 @@ def team_stats(stat, column, label_col=None, max_plot=5):
     # plt.show()
 
 team_stats(stat='HOME_TEAM_WINS', column='Number of wins', label_col='TEAM NAME', max_plot=10)
-# team_stats(high_scoring_teams, column='Overall Points', label_col='TEAM NAME', max_plot=10)
+# team_stats(stat='PTS_home', column='Overall Home Points', label_col='TEAM NAME', max_plot=10)
+# team_stats(stat='PTS_away', column='Overall Away Points', label_col='TEAM NAME', max_plot=10)

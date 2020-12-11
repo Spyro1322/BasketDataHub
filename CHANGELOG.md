@@ -115,3 +115,8 @@ team abbreviation at first and then maybe based on the season we wish. This task
 ### 2020-12-10
 * Made a separate file for correlations between categories. Updated the utilities.py with a few new functions too. 
 Experimentation on team_stats.py .
+  
+### 2020-12-11
+* Worked on my brief presentation that is coming next week (structure and flow). 
+
+* Beauty up our code files and improve some lines.
