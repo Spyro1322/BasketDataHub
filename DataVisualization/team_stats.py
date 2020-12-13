@@ -27,39 +27,39 @@ print(trans)
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
-def team_stats(stat, column, label_col=None, max_plot=5):
+def team_stats(df, column, label_col=None, max_plot=5):
     # Plotting function for the main statistical categories in games.csv
     # Draws top-10 teams for the given stat_category since 2004
     # Argument 'stat' refers to the exact names of the labels of games.csv
 
     # Select which category to study further.
-    team_cat = np.where(games[stat] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
-    team_cat = pd.DataFrame(team_cat, columns=['TEAM_ID'])
-    team_cat = team_cat.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')[
-        'NICKNAME'].value_counts().to_frame().reset_index()
-    team_cat.columns = ['TEAM NAME', column]
-    print(team_cat)
+    # team_cat = np.where(games[stat] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
+    # team_cat = pd.DataFrame(team_cat, columns=['TEAM_ID'])
+    # team_cat = team_cat.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')[
+    #     'NICKNAME'].value_counts().to_frame().reset_index()
+    # team_cat.columns = ['TEAM NAME', column]
+    # print(team_cat)
 
-    top_df = team_cat.sort_values(column, ascending=False).head(max_plot)
+    top_df = df.sort_values(column, ascending=False).head(max_plot)
     height = top_df[column]
     if label_col is None:
         x = top_df.index
     else:
         x = top_df[label_col]
     gold, silver, bronze, other = ('#FFA400', '#bdc3c7', '#cd7f32', '#3498db')
-    # colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
+    colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
     fig, ax = plt.subplots(figsize=(18, 7))
-    # ax.bar(x, height, color=colors)
-    # plt.xticks(x, x, rotation=60)
+    ax.bar(x, height, color=colors)
+    plt.xticks(x, x, rotation=60)
     plt.xlabel(label_col)
     plt.ylabel(column)
     plt.title(f'Top {max_plot} of {column}')
-    # plt.show()
-    ax = sns.barplot(x, height)
-    # for i, (value, name) in enumerate(zip(team_cat, team_cat.columns)):
-    #     ax.text(value, i - .05, f'{value:,.0f}', size=10, ha='left', va='center')
-    ax.set(xlabel=label_col, ylabel=column)
     plt.show()
+    # ax = sns.barplot(x, height)
+    # # for i, (value, name) in enumerate(zip(team_cat, team_cat.columns)):
+    # #     ax.text(value, i - .05, f'{value:,.0f}', size=10, ha='left', va='center')
+    # ax.set(xlabel=label_col, ylabel=column)
+    # plt.show()
 
 # Maybe process some Team overall stats as wins,losses etc.
 # winning_teams = np.where(games['HOME_TEAM_WINS'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
@@ -68,10 +68,10 @@ def team_stats(stat, column, label_col=None, max_plot=5):
 # winning_teams.columns = ['TEAM NAME', 'Number of wins']
 # # print(winning_teams)
 #
-# high_scoring_teams = np.where(games['PTS_home'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
-# high_scoring_teams = pd.DataFrame(high_scoring_teams, columns=['TEAM_ID'])
-# high_scoring_teams = high_scoring_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
-# high_scoring_teams.columns = ['TEAM NAME', 'Overall Points']
+high_scoring_teams = np.where(games['AST_home'] == 1, games['HOME_TEAM_ID'], games['VISITOR_TEAM_ID'])
+high_scoring_teams = pd.DataFrame(high_scoring_teams, columns=['TEAM_ID'])
+high_scoring_teams = high_scoring_teams.merge(teams[['TEAM_ID', 'NICKNAME']], on='TEAM_ID')['NICKNAME'].value_counts().to_frame().reset_index()
+high_scoring_teams.columns = ['TEAM NAME', 'Overall Points']
 
 
     # sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
@@ -106,6 +106,6 @@ def team_stats(stat, column, label_col=None, max_plot=5):
     # plt.ylabel("REB GRABBED ")
     # plt.show()
 
-team_stats(stat='HOME_TEAM_WINS', column='Number of wins', label_col='TEAM NAME', max_plot=10)
-# team_stats(stat='PTS_home', column='Overall Home Points', label_col='TEAM NAME', max_plot=10)
-# team_stats(stat='PTS_away', column='Overall Away Points', label_col='TEAM NAME', max_plot=10)
+# team_stats(hi, column='Number of wins', label_col='TEAM NAME', max_plot=10)
+team_stats(high_scoring_teams, column='Overall Points', label_col='TEAM NAME', max_plot=10)
+# team_stats(stat='REB_home', column='Overall Home Rebounds', label_col='TEAM NAME', max_plot=10)

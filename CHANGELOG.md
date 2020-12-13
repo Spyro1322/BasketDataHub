@@ -120,3 +120,9 @@ Experimentation on team_stats.py .
 * Worked on my brief presentation that is coming next week (structure and flow). 
 
 * Beauty up our code files and improve some lines.
+
+### 2020-12-13
+* Created histograms.py for the main categories of the project. It is about visualizing overall team statistics.
+Correlations too(sort of) but need improvements.
+
+* Finished my presentation and got ready! 

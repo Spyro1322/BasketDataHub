@@ -11,10 +11,10 @@ games_details.drop(['GAME_ID', 'TEAM_ID', 'PLAYER_ID', 'START_POSITION', 'COMMEN
 games_details = games_details.dropna()
 
 
-plt.figure(figsize=(14, 7))
-sns.heatmap(games_details.corr(), cmap='coolwarm', annot=True)
-sns.heatmap(games.corr(), cmap='coolwarm', annot=True)
-sns.heatmap(teams.corr(), cmap='coolwarm', annot=True)
+# plt.figure(figsize=(14, 7))
+# sns.heatmap(games_details.corr(), cmap='coolwarm', annot=True)
+# sns.heatmap(games.corr(), cmap='coolwarm', annot=True)
+# sns.heatmap(teams.corr(), cmap='coolwarm', annot=True)
 
 
 df_tmp = games_details[['PLAYER_NAME', 'MIN']]
@@ -35,6 +35,7 @@ blind_plot(agg, column='Number of seconds played', label_col='PLAYER_NAME', max_
 blind_plot(winning_teams, column='Number of wins', label_col='TEAM NAME', max_plot=10)
 column_distribution(games_details, 10, 5)
 correlation_matrix(games_details, 8)
-# scatter_matrix(games_details, 20, 10)
+correlation_matrix(games, 8)
+scatter_matrix(games_details, 20, 10)
 
 
