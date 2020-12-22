@@ -126,3 +126,7 @@ Experimentation on team_stats.py .
 Correlations too(sort of) but need improvements.
 
 * Finished my presentation and got ready! 
+
+### 2020-12-22
+* Deleted unnecessary comments and lines of code from all our files. Ready to start upgrading the project by insrting key
+word arguments and make it more functional and easily operable.
