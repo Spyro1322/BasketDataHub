@@ -128,5 +128,10 @@ Correlations too(sort of) but need improvements.
 * Finished my presentation and got ready! 
 
 ### 2020-12-22
-* Deleted unnecessary comments and lines of code from all our files. Ready to start upgrading the project by insrting key
+* Deleted unnecessary comments and lines of code from all our files. Ready to start upgrading the project by inserting key
 word arguments and make it more functional and easily operable.
+  
+### 2021-03-09
+* Finally we are back. Let's catch up and study what we have already done and what is to be done.
+
+* Starting from top20.py our goal is to create suitable functions both to find the players we want and plot the results.

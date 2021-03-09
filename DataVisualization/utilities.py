@@ -33,7 +33,7 @@ def print_missing_values(df):
     plt.show()
 
 
-def dataset_overview(df, df_name):
+def dataset_overview(df):
     # A general overview
     print_missing_values(df)
 
@@ -101,7 +101,6 @@ def correlation_matrix(df, graphWidth):
     plt.colorbar(corrMat)
     plt.title(f'Correlation Matrix for {filename}', fontsize=15)
     plt.show()
-
 
 
 def scatter_matrix(df, plotSize, textSize):
