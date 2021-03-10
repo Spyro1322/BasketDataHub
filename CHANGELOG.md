@@ -139,4 +139,4 @@ word arguments and make it more functional and easily operable.
 ### 2021-03-10
 * Keep changing top20.py so as to plot one specific category for a specific player. 
 
-* Study about Click library. 
+* Study about Click library. Installed virtualenv and Click. It still remains the configuration of setup file. 
