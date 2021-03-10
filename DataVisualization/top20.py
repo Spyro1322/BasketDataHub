@@ -5,6 +5,19 @@ import seaborn as sns
 # Dataframe
 games_details = pd.read_csv('../Data/games_details.csv')
 
+# Players' stats
+def indiv_stats(name, cat):
+    ind = games_details.groupby(['PLAYER_NAME'])
+    person = ind.get_group(name)
+    plt.figure(figsize=(10, 8))
+    plt.xlabel(cat, fontsize=10)
+    plt.ylabel('Number of Games', fontsize=10)
+    plt.title('Career Benchmarks of %s' ' in %s' %(name, cat))
+    sns.violinplot(person[cat])
+    plt.xticks(rotation=90)
+    plt.show()
+
+
 # Top 20 players in different categories since 2004
 def top_players(stat):
     players = games_details.groupby(by='PLAYER_NAME')[stat].sum().sort_values(ascending=False).head(20).reset_index()
@@ -23,6 +36,8 @@ def top20_plot(x_label, category):
     #     ax.text(value, i - .05, f'{value:,.0f}', size=10, ha='left', va='center')
     # ax.set(xlabel='x_label', ylabel='PLAYER_NAME')
     # plt.show()
+
+indiv_stats('LeBron James', 'PTS')
 
 # top20_plot('PTS', 'Scorers')
 
@@ -73,25 +88,4 @@ def top20_plot(x_label, category):
 # for i, (value, name) in enumerate(zip(top_throwers['FTM'], top_throwers['PLAYER_NAME'])):
 #     ax.text(value, i-.05, f'{value:,.0f}', size=10, ha='left', va='center')
 # ax.set(xlabel='Free-Throws made', ylabel='PLAYER_NAME')
-# plt.show()
-
-# # Some of Giannis's Antetokounmpo stats
-# player = games_details.groupby(['PLAYER_NAME'])
-# greekFreak = player.get_group('Giannis Antetokounmpo')
-# plt.figure(figsize=(10, 8))
-# plt.xlabel('POINTS', fontsize=10)
-# plt.ylabel('Number of Games', fontsize=10)
-# plt.title('Career Benchmarks in Points')
-# sns.countplot(greekFreak['PTS'])
-# plt.xticks(rotation=90)
-# plt.show()
-#
-# player = games_details.groupby(['PLAYER_NAME'])
-# greekFreak = player.get_group('Giannis Antetokounmpo')
-# plt.figure(figsize=(10, 8))
-# plt.xlabel('REB', fontsize=10)
-# plt.ylabel('Number of Games', fontsize=10)
-# plt.title('Career Benchmarks in Rebounds')
-# sns.countplot(greekFreak['REB'])
-# plt.xticks(rotation=90)
 # plt.show()

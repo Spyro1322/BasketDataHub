@@ -135,3 +135,8 @@ word arguments and make it more functional and easily operable.
 * Finally we are back. Let's catch up and study what we have already done and what is to be done.
 
 * Starting from top20.py our goal is to create suitable functions both to find the players we want and plot the results.
+
+### 2021-03-10
+* Keep changing top20.py so as to plot one specific category for a specific player. 
+
+* Study about Click library. 
