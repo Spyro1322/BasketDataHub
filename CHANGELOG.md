@@ -140,3 +140,6 @@ word arguments and make it more functional and easily operable.
 * Keep changing top20.py so as to plot one specific category for a specific player. 
 
 * Study about Click library. Installed virtualenv and Click. It still remains the configuration of setup file. 
+
+### 2021-03-11
+* Starting to learn Click, Vim configuration completed and go on.
