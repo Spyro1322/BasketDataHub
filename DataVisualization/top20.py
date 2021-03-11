@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 # Dataframe
 games_details = pd.read_csv('../Data/games_details.csv')
 
