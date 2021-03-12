@@ -143,3 +143,9 @@ word arguments and make it more functional and easily operable.
 
 ### 2021-03-11
 * Starting to learn Click, Vim configuration completed and go on.
+
+### 2021-03-12
+* Tutorials on Click, additional links in our drive folder and beginning of the main structure we want to achieve with 
+click library.
+  
+* Check if boxes.py could be more "functional". Made it much smaller.
