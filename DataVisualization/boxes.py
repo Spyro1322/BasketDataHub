@@ -27,34 +27,24 @@ print(trans)
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
-sns.boxplot(x="VISITOR_TEAM_ID", y="PTS_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("PTS SCORED ")
-plt.show()
+# Plot season stats for Teams
+def overall_stats(choice, category):
+    # Choose home or away teams' stats.
 
-# Assists
-sns.boxplot(x="HOME_TEAM_ID", y="AST_home", data=games_est)
-plt.xlabel("HOME TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("AST MADE ")
-plt.show()
+    if choice==1:
+        sns.boxplot(x="HOME_TEAM_ID", y=category, data=games_est)
+        plt.xlabel("HOME TEAM")
+        plt.xticks(rotation=90)
+        plt.ylabel("%s MADE" % category)
+        plt.title("Home Teams' Numbers in %s for 18-19 Season" % category)
+        plt.show()
+    else:
+        sns.boxplot(x="VISITOR_TEAM_ID", y=category, data=games_est)
+        plt.xlabel("VISITOR TEAM")
+        plt.xticks(rotation=90)
+        plt.ylabel("%s MADE" % category)
+        plt.title("AWAY Teams' Numbers in %s for 18-19 Season" % category)
+        plt.show()
 
-sns.boxplot(x="VISITOR_TEAM_ID", y="AST_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("AST MADE ")
-plt.show()
 
-# Rebounds
-sns.boxplot(x="HOME_TEAM_ID", y="REB_home", data=games_est)
-plt.xlabel("HOME TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("REB GRABBED ")
-plt.show()
-
-sns.boxplot(x="VISITOR_TEAM_ID", y="REB_away", data=games_est)
-plt.xlabel("AWAY TEAM")
-plt.xticks(rotation=90)
-plt.ylabel("REB GRABBED ")
-plt.show()
+overall_stats(2,'PTS_home')
