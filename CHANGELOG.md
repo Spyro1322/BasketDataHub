@@ -149,3 +149,6 @@ word arguments and make it more functional and easily operable.
 click library.
   
 * Check if boxes.py could be more "functional". Made it much smaller.
+
+### 2021-03-22
+* Begin our week with team_stats and stats_comparison programs. Surely there will be necessary changes. 
