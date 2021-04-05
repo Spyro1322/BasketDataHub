@@ -156,3 +156,6 @@ click library.
 ### 2021-03-29
 * Let's go at it! Change stats_comparison.py to make radarplots for any given player comparing his individual statistics
 to the rest of the league. We also maintained the comparison between two chosen players.
+  
+### 2021-04-05 
+* Overall check for errors, unnecessary code and comments, structure control.
