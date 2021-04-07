@@ -27,34 +27,14 @@ games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
 
-# Plot a few correlations
-sns.scatterplot(x="PTS_home", y="AST_home", data=games_est, alpha=0.5)
+def corr_scatter(x_param, y_param, df):
 
-plt.xlabel("POINTS SCORED (HOME TEAMS)")
-plt.xticks(rotation=90)
-plt.ylabel("ASSIST SCORED (HOME TEAMS)")
-plt.show()
+    # Plot a few correlations
 
-print("Pearson correlation coefficient:", pearson_r(games_est["PTS_home"], games_est["AST_home"]))
+    sns.scatterplot(x=x_param, y=y_param, data=df, alpha=0.5)
+    plt.xlabel(x_param)
+    plt.xticks(rotation=90)
+    plt.ylabel(y_param)
+    plt.show()
 
-sns.scatterplot(x="PTS_away", y="AST_away", data=games_est, alpha=0.5)
-
-plt.xlabel("POINTS SCORED (AWAY TEAMS)")
-plt.xticks(rotation=90)
-plt.ylabel("ASSIST SCORED (AWAY TEAMS)")
-plt.show()
-
-print("Pearson correlation coefficient;", pearson_r(games_est["PTS_away"], games_est["AST_away"]))
-
-# Following the steps above we could study even more correlations in games.csv
-
-# Plot the relationship between HOME_TEAM_WINS and PTS,AST and REB scored by each team.
-sns.set(style="darkgrid")
-plot_list = ["PTS_home", "AST_home", "REB_home", "PTS_away", "AST_away", "REB_away"]
-
-fig, axes = plt.subplots(2, 3, figsize=(25, 10), sharex=True)
-for j in range(2):
-    for i, ax in enumerate(axes.flat):
-        sns.boxplot(x="HOME_TEAM_WINS", y=plot_list[i], data=games_est, ax=ax)
-
-plt.show()
+corr_scatter("PTS_home", "AST_home", df=games_est)

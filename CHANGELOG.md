@@ -159,3 +159,6 @@ to the rest of the league. We also maintained the comparison between two chosen 
   
 ### 2021-04-05 
 * Overall check for errors, unnecessary code and comments, structure control.
+
+### 2021-04-07
+* Corr_demo & histograms ready. In histograms file there is a RuntimeWarning that needs to be fixed.
