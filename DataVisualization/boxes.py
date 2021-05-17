@@ -23,28 +23,29 @@ games_est = games_est.drop(columns=["TEAM_ID_home", "TEAM_ID_away", "GAME_STATUS
 
 # Select Team-Abbreviation for easier coding
 trans = teams.set_index("TEAM_ID")["ABBREVIATION"].to_dict()
-print(trans)
+# print(trans)
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
 # Plot season stats for Teams
-def overall_stats(choice, category):
-    # Choose home or away teams' stats.
-
-    if choice==1:
-        sns.boxplot(x="HOME_TEAM_ID", y=category, data=games_est)
-        plt.xlabel("HOME TEAM")
+def home_overall_stats(*category):
+    # Choose home teams' stats.
+    for cat in category:
+        sns.boxplot(x="HOME_TEAM_ID", y=cat, data=games_est)
+        plt.xlabel("HOME TEAM", size=12)
         plt.xticks(rotation=90)
-        plt.ylabel("%s MADE" % category)
-        plt.title("Home Teams' Numbers in %s for 18-19 Season" % category)
+        plt.ylabel("%s MADE" % cat, size=12)
+        plt.title("Home Teams' Numbers in %s for 18-19 Season" % cat, size=10)
+        plt.tight_layout()
         plt.show()
-    else:
-        sns.boxplot(x="VISITOR_TEAM_ID", y=category, data=games_est)
+
+def away_overall_stats(*category):
+    for cate in category:
+        sns.boxplot(x="VISITOR_TEAM_ID", y=cate, data=games_est)
         plt.xlabel("VISITOR TEAM")
         plt.xticks(rotation=90)
-        plt.ylabel("%s MADE" % category)
-        plt.title("AWAY Teams' Numbers in %s for 18-19 Season" % category)
+        plt.ylabel("%s MADE" % cate)
+        plt.title("AWAY Teams' Numbers in %s for 18-19 Season" % cate)
+        plt.tight_layout()
         plt.show()
 
-
-overall_stats(2,'PTS_home')
