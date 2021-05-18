@@ -27,14 +27,12 @@ games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
 
-def corr_scatter(x_param, y_param, df):
+def corr_scatter(cat1, cat2, df):
 
     # Plot a few correlations
-
-    sns.scatterplot(x=x_param, y=y_param, data=df, alpha=0.5)
-    plt.xlabel(x_param)
-    plt.xticks(rotation=90)
-    plt.ylabel(y_param)
-    plt.show()
-
-corr_scatter("PTS_home", "AST_home", df=games_est)
+    # for value in params:
+        sns.scatterplot(x=cat1, y=cat2, data=df, alpha=0.5)
+        plt.xlabel(cat1)
+        plt.xticks(rotation=90)
+        plt.ylabel(cat2)
+        plt.show()
