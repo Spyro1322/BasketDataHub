@@ -162,3 +162,10 @@ to the rest of the league. We also maintained the comparison between two chosen 
 
 ### 2021-04-07
 * Corr_demo & histograms ready. In histograms file there is a RuntimeWarning that needs to be fixed.
+
+### 2021-05-18
+* Started again with boxes, corr_demo, histograms and used *args in our main functions as have been told. I will also check
+the rest of the files for similar changes.
+
+* Maybe we could come up with some new ideas about visualizing our dataframes.  
+
