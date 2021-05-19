@@ -169,3 +169,7 @@ the rest of the files for similar changes.
 
 * Maybe we could come up with some new ideas about visualizing our dataframes.  
 
+### 2021-05-19
+* Going to change stats_comparison and team_stats main functions so as to use them with more arguments.
+
+
