@@ -172,4 +172,8 @@ the rest of the files for similar changes.
 ### 2021-05-19
 * Going to change stats_comparison and team_stats main functions so as to use them with more arguments.
 
+### 2021-05-23
+* Stats_comparison and team_stats have been updated, email briefing sent and move on !
+
+
 

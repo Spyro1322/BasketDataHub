@@ -25,7 +25,6 @@ stats_cols = {
     'PLUS_MINUS': 'Plus-Minus'
 }
 
-
 def agg_on_columns(df, agg_var, operation=None):
     if operation is None:
         operation = ['mean']
@@ -47,34 +46,35 @@ def rename_df(df, col_dict):
     return df
 
 
-def indiv_player_df(full_name):
-    # Creates a specific dataset for any choosen player
+def indiv_player_df(*full_name):
+    # Creates a specific dataset for any chosen player
     # and radar plots his statistics
-    player_df = df_tmp[df_tmp['PLAYER_NAME'] == full_name]
-    overall_agg_prct = agg_on_columns(df=df_tmp, agg_var=prct_var, operation=['mean'])
-    overall_agg_other = agg_on_columns(df=df_tmp, agg_var=other_var, operation=['mean'])
-    player_stats_prct = agg_on_columns(df=player_df, agg_var=prct_var, operation=['mean'])
-    player_stats_other = agg_on_columns(df=player_df, agg_var=other_var, operation=['mean'])
+    for name in full_name:
+        player_df = df_tmp[df_tmp['PLAYER_NAME'] == name]
+        overall_agg_prct = agg_on_columns(df=df_tmp, agg_var=prct_var, operation=['mean'])
+        overall_agg_other = agg_on_columns(df=df_tmp, agg_var=other_var, operation=['mean'])
+        player_stats_prct = agg_on_columns(df=player_df, agg_var=prct_var, operation=['mean'])
+        player_stats_other = agg_on_columns(df=player_df, agg_var=other_var, operation=['mean'])
 
-    stats_prct = pd.concat([player_stats_prct, overall_agg_prct])
-    stats_other = pd.concat([player_stats_other, overall_agg_other])
-    stats_prct.index = [full_name, 'overall stats']
-    stats_other.index = [full_name, 'overall stats']
+        stats_prct = pd.concat([player_stats_prct, overall_agg_prct])
+        stats_other = pd.concat([player_stats_other, overall_agg_other])
+        stats_prct.index = [name, 'overall stats']
+        stats_other.index = [name, 'overall stats']
 
-    stats_prct = rename_df(stats_prct, col_dict=stats_cols)
-    stats_other = rename_df(stats_other, col_dict=stats_cols)
+        stats_prct = rename_df(stats_prct, col_dict=stats_cols)
+        stats_other = rename_df(stats_other, col_dict=stats_cols)
 
-    player_df_figure = plt.subplots(figsize=(18, 9))
-    ax = plt.subplot(121, polar=True)
+        player_df_figure = plt.subplots(figsize=(18, 9))
+        ax = plt.subplot(121, polar=True)
 
-    ax.set_title('Percentage statistics')
-    radar_plot(ax=ax, df=stats_prct, max_val=1)
+        ax.set_title('Percentage statistics')
+        radar_plot(ax=ax, df=stats_prct, max_val=1)
 
-    ax = plt.subplot(122, polar=True)
-    ax.set_title('Others statistics')
-    radar_plot(ax=ax, df=stats_other, max_val=10)
+        ax = plt.subplot(122, polar=True)
+        ax.set_title('Others statistics')
+        radar_plot(ax=ax, df=stats_other, max_val=10)
 
-    plt.show()
+        plt.show()
 
 
 def get_players_stats(player_one, player_two):
@@ -114,15 +114,7 @@ def show_player_stats_comparison(stats_prct, stats_other):
     radar_plot(ax=ax, df=stats_prct, max_val=1)
 
     ax = plt.subplot(122, polar=True)
-    ax.set_title('Others statistics')
+    ax.set_title('Other statistics')
     radar_plot(ax=ax, df=stats_other, max_val=10)
 
     plt.show()
-
-
-indiv_player_df('LeBron James')
-
-stats_prct, stats_other = get_players_stats(player_one='Russell Westbrook', player_two='Giannis Antetokounmpo')
-
-show_player_stats_comparison(stats_prct, stats_other)
-show_player_stats_comparison(stats_prct, stats_other)
