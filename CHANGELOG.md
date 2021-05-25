@@ -176,6 +176,6 @@ the rest of the files for similar changes.
 * Stats_comparison and team_stats have been updated, email briefing sent and move on !
 
 ### 2021-05-25
-* Have done some studying on Click and keep on so.
+* Have done some studying on Click and keep on so. Made something working in top20 with Click library.
 
 

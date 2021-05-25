@@ -11,7 +11,6 @@ games_details = pd.read_csv('../Data/games_details.csv')
 @click.argument('name')
 @click.argument('cat')
 
-
 def indiv_stats(name, cat):
     # Players' stats
     ind = games_details.groupby(['PLAYER_NAME'])
@@ -23,6 +22,9 @@ def indiv_stats(name, cat):
     sns.violinplot(person[cat])
     plt.xticks(rotation=90)
     plt.show()
+
+
+
 
 
 # Top 20 players in different categories since 2004
