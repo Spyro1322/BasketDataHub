@@ -4,9 +4,9 @@ import numpy as np
 import seaborn as sns
 
 # Dataframes - dfs, games.csv is interesting enough in combination with the others that have already been used
-games_details = pd.read_csv('../Data/games_details.csv')
-games = pd.read_csv('../Data/games.csv')
-teams = pd.read_csv('../Data/teams.csv')
+games_details = pd.read_csv('../venv/Data/games_details.csv')
+games = pd.read_csv('../venv/Data/games.csv')
+teams = pd.read_csv('../venv/Data/teams.csv')
 
 def hist_plot(df, *category):
     # Plotting function for histograms per given stat category

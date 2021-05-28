@@ -178,4 +178,8 @@ the rest of the files for similar changes.
 ### 2021-05-25
 * Have done some studying on Click and keep on so. Made something working in top20 with Click library.
 
-
+### 2021-05-28
+* Read some additional bibliography about Click and I am ready to implement new things until next update at the end of 
+the week.
+  
+* Added our main functions in the setup.py file of the virtual environment.

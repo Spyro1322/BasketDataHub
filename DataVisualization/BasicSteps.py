@@ -2,9 +2,9 @@ import seaborn as sns
 from utilities import *
 
 # Dataframes - dfs
-games_details = pd.read_csv('../Data/games_details.csv')
-games = pd.read_csv('../Data/games.csv')
-teams = pd.read_csv('../Data/teams.csv')
+games_details = pd.read_csv('../venv/Data/games_details.csv')
+games = pd.read_csv('../venv/Data/games.csv')
+teams = pd.read_csv('../venv/Data/teams.csv')
 
 # Delete unnecessary columns
 games_details.drop(['GAME_ID', 'TEAM_ID', 'PLAYER_ID', 'START_POSITION', 'COMMENT', 'TEAM_ABBREVIATION'], axis=1, inplace=True)

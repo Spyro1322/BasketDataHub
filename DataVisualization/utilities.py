@@ -8,9 +8,9 @@ from math import pi
 # import seaborn as sns
 
 # Dataframes - dfs
-games_details = pd.read_csv('../Data/games_details.csv')
-games = pd.read_csv('../Data/games.csv')
-teams = pd.read_csv('../Data/teams.csv')
+games_details = pd.read_csv('../venv/Data/games_details.csv')
+games = pd.read_csv('../venv/Data/games.csv')
+teams = pd.read_csv('../venv/Data/teams.csv')
 
 
 def print_missing_values(df):

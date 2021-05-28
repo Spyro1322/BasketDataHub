@@ -5,7 +5,7 @@ import click
 
 
 # Dataframe
-games_details = pd.read_csv('../Data/games_details.csv')
+games_details = pd.read_csv('../venv/Data/games_details.csv')
 
 @click.command()
 @click.argument('name')
