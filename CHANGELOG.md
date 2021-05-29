@@ -183,3 +183,15 @@ the rest of the files for similar changes.
 the week.
   
 * Added our main functions in the setup.py file of the virtual environment.
+
+### 2021-05-29
+* Using CLick in stats_comparison and top20 python files and keep on coding!
+
+### 2021-05-29
+* Using CLick in stats_comparison and top20 python files and keep on coding!
+
+### 2021-05-29
+* Using CLick in stats_comparison and top20 python files and keep on coding!
+
+### 2021-05-29
+* Using CLick in stats_comparison and top20 python files and keep on coding!
