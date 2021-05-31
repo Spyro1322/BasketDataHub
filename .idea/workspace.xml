@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bac6ab5a-6a01-40f2-8aee-0dc26ed8af85" name="Default Changelist" comment="To be continued...">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,11 +292,11 @@
     </configuration>
     <list>
       <item itemvalue="Python.boxes" />
+      <item itemvalue="Python.stats_comparison (1)" />
       <item itemvalue="Python.stats_comparison" />
       <item itemvalue="Python.team_stats" />
-      <item itemvalue="Python.top20" />
       <item itemvalue="Python.top20 (1)" />
-      <item itemvalue="Python.stats_comparison (1)" />
+      <item itemvalue="Python.top20" />
     </list>
     <recent_temporary>
       <list>
