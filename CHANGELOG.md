@@ -187,11 +187,9 @@ the week.
 ### 2021-05-29
 * Using CLick in stats_comparison and top20 python files and keep on coding!
 
-### 2021-05-29
-* Using CLick in stats_comparison and top20 python files and keep on coding!
-
-### 2021-05-29
-* Using CLick in stats_comparison and top20 python files and keep on coding!
-
-### 2021-05-29
-* Using CLick in stats_comparison and top20 python files and keep on coding!
+### 2021-05-31
+* Function 'indiv_player_df' in stats_comparison file is ready with Click. Next step : configure how to run different
+function from the same file using Click library again. Additionally, function 'indiv_stats' in top20 file is working with 
+  Click.
+  
+* 
