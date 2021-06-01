@@ -192,4 +192,5 @@ the week.
 function from the same file using Click library again. Additionally, function 'indiv_stats' in top20 file is working with 
   Click.
   
-* 
+### 2021-05-01
+* Continue to modifying rest of our files with Click. Histograms.py at first and go on.

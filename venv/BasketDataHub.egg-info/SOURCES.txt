@@ -1,0 +1,9 @@
+setup.py
+BasketDataHub.egg-info/PKG-INFO
+BasketDataHub.egg-info/SOURCES.txt
+BasketDataHub.egg-info/dependency_links.txt
+BasketDataHub.egg-info/entry_points.txt
+BasketDataHub.egg-info/requires.txt
+BasketDataHub.egg-info/top_level.txt
+Scripts/__init__.py
+Scripts/activate_this.py
