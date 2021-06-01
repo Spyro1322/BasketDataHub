@@ -193,4 +193,4 @@ function from the same file using Click library again. Additionally, function 'i
   Click.
   
 ### 2021-05-01
-* Continue to modifying rest of our files with Click. Histograms.py at first and go on.
+* Continue to modifying rest of our files with Click. Boxes.py is ready at first and go on.

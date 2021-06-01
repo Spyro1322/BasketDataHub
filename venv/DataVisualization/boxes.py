@@ -1,6 +1,7 @@
 from utilities import *
 import matplotlib.pyplot as plt
 import seaborn as sns
+import click
 
 
 # Check '18 - '19 different statistical categories for the teams
@@ -25,8 +26,10 @@ trans = teams.set_index("TEAM_ID")["ABBREVIATION"].to_dict()
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
+@click.command()
+@click.argument('category', type=str, nargs=-1)
 # Plot season stats for Teams
-def home_overall_stats(*category):
+def home_overall_stats(category):
     # Choose home teams' stats.
     for cat in category:
         sns.boxplot(x="HOME_TEAM_ID", y=cat, data=games_est)
@@ -37,7 +40,9 @@ def home_overall_stats(*category):
         plt.tight_layout()
         plt.show()
 
-def away_overall_stats(*category):
+@click.command()
+@click.argument('category', type=str, nargs=1)
+def away_overall_stats(category):
     for cate in category:
         sns.boxplot(x="VISITOR_TEAM_ID", y=cate, data=games_est)
         plt.xlabel("VISITOR TEAM")
@@ -47,3 +52,5 @@ def away_overall_stats(*category):
         plt.tight_layout()
         plt.show()
 
+if __name__ == '__main__':
+    home_overall_stats()
