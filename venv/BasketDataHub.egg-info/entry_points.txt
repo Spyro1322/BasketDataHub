@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        DataVisualization=DataVisualization.top20:indiv_stats
+    
