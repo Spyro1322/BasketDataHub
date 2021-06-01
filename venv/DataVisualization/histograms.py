@@ -1,3 +1,4 @@
+from utilities import *
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,6 +9,10 @@ import click
 games_details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
+
+@click.group()
+def group():
+    pass
 
 @click.command()
 @click.argument('df', type=str)
