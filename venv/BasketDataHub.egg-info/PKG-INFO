@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Metadata-Version: 1.0
 Name: BasketDataHub
 Version: 0.1
@@ -8,3 +9,15 @@ Author-email: UNKNOWN
 License: UNKNOWN
 Description: UNKNOWN
 Platform: UNKNOWN
+=======
+Metadata-Version: 1.0
+Name: BasketDataHub
+Version: 0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+>>>>>>> e6f9509c2eacf5fbdb9997ec93f0ce44c108039f
