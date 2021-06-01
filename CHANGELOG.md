@@ -192,4 +192,6 @@ the week.
 function from the same file using Click library again. Additionally, function 'indiv_stats' in top20 file is working with 
   Click.
   
-* 
+### 2021-06-01
+* Continue to editing our files based on Click functionalities. Firstly, note that 'home_overall_stats' function in boxes.py is ready. Next step is to implement perhaps an option for the user to choose home or away stats to study based on games.csv dataframe.
+* Also added 'venv' in our GitHub main project directory.     
