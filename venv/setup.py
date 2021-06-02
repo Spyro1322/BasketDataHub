@@ -18,8 +18,7 @@ setup(
     entry_points={
         'console_scripts': [
             'DataVisualization=DataVisualization.top20:indiv_stats',
-            'DataVisualization=DataVisualization.boxes:home_overall_stats',
-            'DataVisualization=DataVisualization.boxes:away_overall_stats',
+            'DataVisualization=DataVisualization.boxes:overall_stats',
             'DataVisualization=DataVisualization.histograms:hist_plot',
             'DataVisualization=DataVisualization.stats_comparison:indiv_player_df',
             # 'DataVisualization=DataVisualization.stats_comparison:get_stats',

@@ -31,26 +31,35 @@ games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 # Plot season stats for Teams
 def home_overall_stats(category):
     # Choose home teams' stats.
-    for cat in category:
-        sns.boxplot(x="HOME_TEAM_ID", y=cat, data=games_est)
+    # for cat in category:
+        sns.boxplot(x="HOME_TEAM_ID", y=category, data=games_est)
         plt.xlabel("HOME TEAM", size=12)
         plt.xticks(rotation=90)
-        plt.ylabel("%s MADE" % cat, size=12)
-        plt.title("Home Teams' Numbers in %s for 18-19 Season" % cat, size=10)
+        plt.ylabel("%s MADE" % category, size=12)
+        plt.title("Home Teams' Numbers in %s for 18-19 Season" % category, size=10)
         plt.tight_layout()
         plt.show()
 
 @click.command()
 @click.argument('category', type=str, nargs=1)
 def away_overall_stats(category):
-    for cate in category:
-        sns.boxplot(x="VISITOR_TEAM_ID", y=cate, data=games_est)
+    # for cate in category:
+        sns.boxplot(x="VISITOR_TEAM_ID", y=category, data=games_est)
         plt.xlabel("VISITOR TEAM")
         plt.xticks(rotation=90)
-        plt.ylabel("%s MADE" % cate)
-        plt.title("AWAY Teams' Numbers in %s for 18-19 Season" % cate)
+        plt.ylabel("%s MADE" % category)
+        plt.title("AWAY Teams' Numbers in %s for 18-19 Season" % category)
         plt.tight_layout()
         plt.show()
 
+
+@click.command()
+@click.option('--home/--away', default=False, help='Choose whether Home or Away stats to study')
+@click.argument('category', type=str, nargs=-1)
+def overall_stats(home, category):
+    if home:
+        home_overall_stats(category)
+    else: away_overall_stats(category)
+
 if __name__ == '__main__':
-    home_overall_stats()
+    overall_stats()

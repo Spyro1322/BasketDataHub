@@ -201,5 +201,7 @@ function from the same file using Click library again. Additionally, function 'i
 * Also added 'venv' in our GitHub main project directory.
 
 ### 2021-06-02
+* The venv is uploaded on GitHub and I hope everything operates correctly.
+
 * Searching for clever ways to implement our visualizations with Click using options and multi commands.
 
