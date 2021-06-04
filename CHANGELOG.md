@@ -205,3 +205,10 @@ function from the same file using Click library again. Additionally, function 'i
 
 * Searching for clever ways to implement our visualizations with Click using options and multi commands.
 
+### 2021-06-04
+* Spent last couple of days studying about other visualization ideas with the intention of implementing them in the upcoming
+period.
+  
+* Configuration with Click is at a pretty good state from my point of view. Basic knowledge is been acquired and we are 
+ready to continue. Briefing email to be sent during the weekend, after a last inspection on what has been done this week.
+
