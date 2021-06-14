@@ -211,4 +211,6 @@ period.
   
 * Configuration with Click is at a pretty good state from my point of view. Basic knowledge is been acquired and we are 
 ready to continue. Briefing email to be sent during the weekend, after a last inspection on what has been done this week.
-
+  
+### 2021-06-14
+* After a one week gap due to exams we are ready to continue with our project.
