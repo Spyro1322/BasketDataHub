@@ -4,3 +4,30 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import click
 
+players = pd.read_csv('../Data/players.csv')
+teams = pd.read_csv('../Data/teams.csv')
+games = pd.read_csv('../Data/games.csv')
+details = pd.read_csv('../Data/games_details.csv')
+ranking = pd.read_csv('../Data/ranking.csv')
+
+details = details.drop_duplicates(subset=["GAME_ID", "PLAYER_NAME"])
+
+def choose_person(name):
+    # Choose which player's growth to study during his career in the NBA
+    person = details[details["PLAYER_NAME"] == name]
+    person.drop(["TEAM_ID", "TEAM_CITY", "PLAYER_ID", "PLAYER_NAME", "COMMENT"], axis=1, inplace=True)
+
+    games_date = games[["GAME_DATE_EST", "GAME_ID", "SEASON"]]
+    stats = person.merge(games_date, on="GAME_ID", how="left")
+    seasonal_stats = stats.groupby("SEASON").sum() / stats.groupby("SEASON").count()
+
+def growth_plots(player, category):
+    fig, axes = plt.subplots(1, 2, figsize=(15, 5))
+    fig.suptitle(f"{category} Each Season (Per Game Statistics)", fontsize=20)
+
+    sns.barplot(x=seasonal_stats[category], y=seasonal_stats.index.map(str), ax=axes[0])
+    sns.lineplot(y=seasonal_stats[category], x=seasonal_stats.index.map(str), ax=axes[1])
+
+    axes[1].tick_params(axis='x', labelrotation=45)
+
+
