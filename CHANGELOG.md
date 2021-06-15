@@ -216,4 +216,6 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
 * After a one week gap due to exams we are ready to continue with our project.
 
 ### 2021-06-15
-* Import two new datasets that maybe will be useful for further consideration.
+* Import two new datasets that maybe will be useful for further consideration. Added new coding file named personal_growth.
+
+* Committed new python file (click configurated) but there is some improvement to be done regarding the graphs.
