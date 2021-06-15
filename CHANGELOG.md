@@ -214,3 +214,6 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
   
 ### 2021-06-14
 * After a one week gap due to exams we are ready to continue with our project.
+
+### 2021-06-15
+* Import two new datasets that maybe will be useful for further consideration.
