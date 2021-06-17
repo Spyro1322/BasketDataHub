@@ -23,12 +23,12 @@ def growth_plots(player, category):
     stats = person.merge(games_date, on="GAME_ID", how="left")
     seasonal_stats = stats.groupby("SEASON").sum()/stats.groupby("SEASON").count()
 
-    fig, axes = plt.subplots(1, 2, figsize=(15, 5))
-    fig.suptitle(f"{player}'s  {category} Each Season (Per Game Statistics)", fontsize=20)
+    plt.figure(figsize=(15, 5))
+    plt.title(f"{player}'s  {category} Each Season (Per Game Statistics)", fontsize=20)
 
-    sns.barplot(x=seasonal_stats[category], y=seasonal_stats.index.map(str), ax=axes[0])
-    sns.lineplot(y=seasonal_stats[category], x=seasonal_stats.index.map(str), ax=axes[1])
-    axes[1].tick_params(axis='x', labelrotation=45)
+    # sns.barplot(x=seasonal_stats[category], y=seasonal_stats.index.map(str), ax=axes[0])
+    sns.lineplot(y=seasonal_stats[category], x=seasonal_stats.index.map(str))
+    # plt.xticks(axis='x', labelrotation=45)
 
     plt.show()
 

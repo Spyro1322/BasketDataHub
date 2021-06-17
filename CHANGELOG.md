@@ -219,3 +219,6 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
 * Import two new datasets that maybe will be useful for further consideration. Added new coding file named personal_growth.
 
 * Committed new python file (click configurated) but there is some improvement to be done regarding the graphs.
+
+### 2021-06-16
+* Created lineplots to start with and more to come next. Looking for more ways to present the results (seaborn, pyplot etc.)
