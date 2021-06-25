@@ -22,6 +22,8 @@ setup(
             'DataVisualization=DataVisualization.histograms:hist_plot',
             'DataVisualization=DataVisualization.stats_comparison:indiv_player_df',
             'DataVisualization=DataVisualization.personal_growth:growth_plots',
+            'DataVisualization=DataVisualization.win_percentage:player_win_perc',
+
         ],
     },
 )

@@ -222,3 +222,6 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
 
 ### 2021-06-16
 * Created lineplots to start with and more to come next. Looking for more ways to present the results (seaborn, pyplot etc.)
+
+### 2021-06-25
+* Creation of pie charts about players' win percentage throughout their careers.
