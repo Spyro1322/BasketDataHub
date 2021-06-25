@@ -13,13 +13,17 @@ ranking = pd.read_csv('../Data/ranking.csv')
 @click.command()
 @click.argument('name', type=str)
 def player_win_perc(name):
+
+    # Pie charts for total win percentage during a player's career
+
     player_details = pd.merge(games, details[details.PLAYER_NAME == name], on="GAME_ID")
     player_details["home"] = player_details["TEAM_ID"] == player_details["TEAM_ID_home"]
     player_details[(player_details["home"] & (player_details["PTS_home"] > player_details["PTS_away"]))]
     player_details["WIN"] = (player_details["home"] & (player_details["PTS_home"] > player_details["PTS_away"])) | (
                 (player_details["home"] == False) & (player_details["PTS_home"] < player_details["PTS_away"]))
     plt.figure(figsize=(10,10))
-    plt.pie(x=player_details.groupby("WIN").count().home, labels = ["LOSE", "WIN"], autopct="%.1f%%", pctdistance=0.5, wedgeprops=dict(edgecolor='w'))
+    plt.pie(x=player_details.groupby("WIN").count().home,
+            labels = ["LOSE", "WIN"], autopct="%.1f%%", pctdistance=0.5, wedgeprops=dict(edgecolor='w'))
     plt.title(f"{name}'s Win Percentage", fontsize=20, color = "black")
     plt.show()
 
