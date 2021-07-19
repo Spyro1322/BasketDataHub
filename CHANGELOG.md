@@ -225,3 +225,11 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
 
 ### 2021-06-25
 * Creation of pie charts about players' win percentage throughout their careers.
+
+### 2021-07-19
+* Make a little revisit inside our python files to "clear" the code more (from unnecessary lines, comments, etc. ) .
+  Afterwards, a function to read dataframes has to be built, as well as a file with constant variables('helpers.py') 
+  that are used very often in multiple files.
+  
+* Very important notice : stats_comparison will may have to be split in different files in order to achieve better 
+  comparative results. 

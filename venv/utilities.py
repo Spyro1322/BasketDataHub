@@ -13,6 +13,13 @@ games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
 
 
+def rename_df(df, col_dict):
+    cols = df.columns
+    new_cols = [(col_dict[c] if c in col_dict else c) for c in cols]
+    df.columns = new_cols
+    return df
+
+
 def print_missing_values(df):
     # Missing values with plot
     df_null = pd.DataFrame(len(df) - df.notnull().sum(), columns=['Count'])

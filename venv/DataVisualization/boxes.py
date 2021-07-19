@@ -22,7 +22,6 @@ games_est = games_est.drop(columns=["TEAM_ID_home", "TEAM_ID_away", "GAME_STATUS
 
 # Select Team-Abbreviation for easier coding
 trans = teams.set_index("TEAM_ID")["ABBREVIATION"].to_dict()
-# print(trans)
 games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
 games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 
