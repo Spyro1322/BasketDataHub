@@ -233,3 +233,6 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
   
 * Very important notice : stats_comparison will may have to be split in different files in order to achieve better 
   comparative results. 
+  
+### 2021-07-20
+* Make read_df function in utilities.py that is used in every python file in DataVisualization directory.

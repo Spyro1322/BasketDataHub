@@ -4,11 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import click
 
-players = pd.read_csv('../Data/players.csv')
-teams = pd.read_csv('../Data/teams.csv')
 games = pd.read_csv('../Data/games.csv')
 details = pd.read_csv('../Data/games_details.csv')
-ranking = pd.read_csv('../Data/ranking.csv')
 
 @click.command()
 @click.argument('name', type=str)

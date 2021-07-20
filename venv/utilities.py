@@ -7,11 +7,8 @@ from math import pi
 
 # import seaborn as sns
 
-# Dataframes - dfs
-games_details = pd.read_csv('../Data/games_details.csv')
-games = pd.read_csv('../Data/games.csv')
-teams = pd.read_csv('../Data/teams.csv')
-
+def read_df(dframe):
+    dframe = pd.read_csv('../Data/%s' %(dframe))
 
 def rename_df(df, col_dict):
     cols = df.columns

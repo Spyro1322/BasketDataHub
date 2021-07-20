@@ -1,14 +1,12 @@
+from utilities import *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import click
 
-players = pd.read_csv('../Data/players.csv')
-teams = pd.read_csv('../Data/teams.csv')
-games = pd.read_csv('../Data/games.csv')
-details = pd.read_csv('../Data/games_details.csv')
-ranking = pd.read_csv('../Data/ranking.csv')
+games = read_df(games)
+details = read_df(games_details)
 
 details = details.drop_duplicates(subset=["GAME_ID", "PLAYER_NAME"])
 
