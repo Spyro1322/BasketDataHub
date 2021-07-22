@@ -236,3 +236,8 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
   
 ### 2021-07-20
 * Make read_df function in utilities.py that is used in every python file in DataVisualization directory.
+
+### 2021-07-22
+* Totally vaccinated and kept on coding! Split initial stats_comparison.py into two separate files : from now on 
+stats_comparison.py is about comparing one individual's statistics to all the other athletes, while players_comparison 
+  compares the statistics of two given players.
