@@ -23,6 +23,7 @@ setup(
             'DataVisualization=DataVisualization.stats_comparison:indiv_player_df',
             'DataVisualization=DataVisualization.personal_growth:growth_plots',
             'DataVisualization=DataVisualization.win_percentage:player_win_perc',
+            'DataVisualization=DataVisualization.players_comparison:show_stats',
 
         ],
     },
