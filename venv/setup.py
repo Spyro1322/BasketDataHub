@@ -24,6 +24,7 @@ setup(
             'DataVisualization=DataVisualization.personal_growth:growth_plots',
             'DataVisualization=DataVisualization.win_percentage:player_win_perc',
             'DataVisualization=DataVisualization.players_comparison:show_stats',
+            'DataVisualization=DataVisualization.team_stats:compare_stats',
 
         ],
     },

@@ -1,7 +1,8 @@
-# import pandas as pd
+import pandas as pd
 from utilities import *
 from helpers import *
 import matplotlib.pyplot as plt
+import click
 # import numpy as np
 # import seaborn as sns
 
@@ -33,33 +34,78 @@ games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
 prct_var = ['FG_PCT_home', 'FG3_PCT_home', 'FT_PCT_home']
 other_var = ['PTS_home', 'REB_home', 'AST_home']
 
+@click.command()
+@click.argument('team_one', type=str, nargs=1)
+@click.argument('team_two', type=str, nargs=1)
+def home_teams_comparison(team_one, team_two):
 
-def spec_team(*team_abr):
-    # Create a specific dataset for any chosen team
+    # Create a comparison radar_plot for any two chosen teams
+    team_one_df = games_est[games_est['HOME_TEAM_ID'] == team_one]
+    team_two_df = games_est[games_est['HOME_TEAM_ID'] == team_two]
 
-    for abr in team_abr:
-        team_df = games_est[games_est['HOME_TEAM_ID'] == abr]
-        # overall_agg_prct = agg_on_columns(df=games_est, agg_var=prct_var, operation=['mean'])
-        # overall_agg_other = agg_on_columns(df=games_est, agg_var=other_var, operation=['mean'])
-        team_df_stats_prct = agg_on_columns(df=team_df, agg_var=prct_var, operation=['mean'])
-        team_df_stats_other = agg_on_columns(df=team_df, agg_var=other_var, operation=['mean'])
+    team_one_agg_prct = agg_on_columns(df=team_one_df, agg_var=prct_var, operation=['mean'])
+    team_one_agg_other = agg_on_columns(df=team_one_df, agg_var=other_var, operation=['mean'])
+    team_two_agg_prct = agg_on_columns(df=team_two_df, agg_var=prct_var, operation=['mean'])
+    team_two_agg_other = agg_on_columns(df=team_two_df, agg_var=other_var, operation=['mean'])
 
-        stats_prct = pd.concat([team_df_stats_prct])
-        stats_other = pd.concat([team_df_stats_other])
-        stats_prct.index = [abr]
-        stats_other.index = [abr]
+    stats_prct = pd.concat([team_one_agg_prct, team_two_agg_prct])
+    stats_other = pd.concat([team_one_agg_other, team_two_agg_other])
+    stats_prct.index = [team_one, team_two]
+    stats_other.index = [team_one, team_two]
+    stats_prct = rename_df(stats_prct, col_dict=teams_stats_cols)
+    stats_other = rename_df(stats_other, col_dict=teams_stats_cols)
 
-        stats_prct = rename_df(stats_prct, col_dict=teams_stats_cols)
-        stats_other = rename_df(stats_other, col_dict=teams_stats_cols)
+    fig = plt.subplots(figsize=(18, 9))
+    ax = plt.subplot(121, polar=True)
 
-        fig = plt.subplots(figsize=(18, 9))
-        ax = plt.subplot(121, polar=True)
+    ax.set_title('Percentage statistics')
+    radar_plot(ax=ax, df=stats_prct, max_val=1)
 
-        ax.set_title('Percentage statistics')
-        radar_plot(ax=ax, df=stats_prct, max_val=1)
+    ax = plt.subplot(122, polar=True)
+    ax.set_title('Others statistics')
+    radar_plot(ax=ax, df=stats_other, max_val=10)
+    plt.show()
 
-        ax = plt.subplot(122, polar=True)
-        ax.set_title('Others statistics')
-        radar_plot(ax=ax, df=stats_other, max_val=10)
+@click.command()
+@click.argument('team_one', type=str, nargs=1)
+@click.argument('team_two', type=str, nargs=1)
+def away_teams_comparison(team_one, team_two):
+    # Create a comparison radar_plot for any two chosen teams
+    team_one_df = games_est[games_est['VISITOR_TEAM_ID'] == team_one]
+    team_two_df = games_est[games_est['VISITOR_TEAM_ID'] == team_two]
 
-        plt.show()
+    team_one_agg_prct = agg_on_columns(df=team_one_df, agg_var=prct_var, operation=['mean'])
+    team_one_agg_other = agg_on_columns(df=team_one_df, agg_var=other_var, operation=['mean'])
+    team_two_agg_prct = agg_on_columns(df=team_two_df, agg_var=prct_var, operation=['mean'])
+    team_two_agg_other = agg_on_columns(df=team_two_df, agg_var=other_var, operation=['mean'])
+
+    stats_prct = pd.concat([team_one_agg_prct, team_two_agg_prct])
+    stats_other = pd.concat([team_one_agg_other, team_two_agg_other])
+    stats_prct.index = [team_one, team_two]
+    stats_other.index = [team_one, team_two]
+    stats_prct = rename_df(stats_prct, col_dict=teams_stats_cols)
+    stats_other = rename_df(stats_other, col_dict=teams_stats_cols)
+
+    fig = plt.subplots(figsize=(18, 9))
+    ax = plt.subplot(121, polar=True)
+
+    ax.set_title('Percentage statistics')
+    radar_plot(ax=ax, df=stats_prct, max_val=1)
+
+    ax = plt.subplot(122, polar=True)
+    ax.set_title('Others statistics')
+    radar_plot(ax=ax, df=stats_other, max_val=10)
+    plt.show()
+
+
+@click.command()
+@click.option('--home/--away', default=False, help='Choose whether Home or Away stats to study')
+@click.argument('team_one', type=str, nargs=1)
+@click.argument('team_two', type=str, nargs=1)
+def compare_stats(home, team_one, team_two):
+    if home:
+        home_teams_comparison(team_one, team_two)
+    else: away_teams_comparison(team_one, team_two)
+
+if __name__ == '__main__':
+    compare_stats()

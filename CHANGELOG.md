@@ -241,3 +241,7 @@ ready to continue. Briefing email to be sent during the weekend, after a last in
 * Totally vaccinated and kept on coding! Split initial stats_comparison.py into two separate files : from now on 
 stats_comparison.py is about comparing one individual's statistics to all the other athletes, while players_comparison 
   compares the statistics of two given players.
+  
+### 2021-07-24
+* Working on team_stats.py to improve comparisons between different teams(option for home/away via Click).
+
