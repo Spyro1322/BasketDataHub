@@ -17,7 +17,8 @@ setup(
     install_requires=read_requirements(),
     entry_points={
         'console_scripts': [
-            'DataVisualization=DataVisualization.top20:indiv_stats',
+            'DataVisualization=DataVisualization.indiv_stats:indiv_stats',
+            'DataVisualization=DataVisualization.top20:top_players',
             'DataVisualization=DataVisualization.boxes:overall_stats',
             'DataVisualization=DataVisualization.histograms:hist_plot',
             'DataVisualization=DataVisualization.stats_comparison:indiv_player_df',
@@ -25,6 +26,7 @@ setup(
             'DataVisualization=DataVisualization.win_percentage:player_win_perc',
             'DataVisualization=DataVisualization.players_comparison:show_stats',
             'DataVisualization=DataVisualization.team_stats:compare_stats',
+            'DataVisualization=DataVisualization.best_teams:top_teams_plot',
 
         ],
     },

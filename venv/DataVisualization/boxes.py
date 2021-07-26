@@ -11,7 +11,6 @@ teams = pd.read_csv('../Data/teams.csv')
 
 games = games.dropna()
 
-# Select Team-Abbreviation for easier coding
 seasons = [2018, 2019]
 games_est = games[games["SEASON"].isin(seasons)]
 win = games_est["HOME_TEAM_WINS"]
