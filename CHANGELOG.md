@@ -249,6 +249,9 @@ stats_comparison.py is about comparing one individual's statistics to all the ot
 * Deployed Click in top20.py (fully functioning). Intend to do the same for top teams since 2004 in important categories.
 
 * Because of the repeated usage of games.csv with home/away stats, I decided to build some functions that are going to 
-be very useful later in the process. Utilities.py has been updated with these new functions.
+be very useful later in the process.
   
-* Next up is to code best_teams.py and compare different teams in multiple statistical categories over the years.
+* Next up is to code best_teams.py and compare different teams in multiple statistical categories over a specific season.
+
+### 2021-07-29
+* Proceeding with best_teams.py, trying to improve its structure and flow, to reach the best result.

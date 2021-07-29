@@ -47,67 +47,6 @@ def dataset_overview(df):
     print_missing_values(df)
 
 
-def create_team_df(team_abbr):
-    # This code will return a dictionary filled with data frames with each teams games
-    seasons = [2018, 2019]
-    games_est = games[games["SEASON"].isin(seasons)]
-    win = games_est["HOME_TEAM_WINS"]
-
-    # Delete unnecessary columns
-    games_est = games_est.drop(columns=["TEAM_ID_home", "TEAM_ID_away", "GAME_STATUS_TEXT"])
-
-    # Select Team-Abbreviation for easier coding
-    trans = teams.set_index("TEAM_ID")["ABBREVIATION"].to_dict()
-    games_est["HOME_TEAM_ID"] = games_est["HOME_TEAM_ID"].replace(trans)
-    games_est["VISITOR_TEAM_ID"] = games_est["VISITOR_TEAM_ID"].replace(trans)
-    games_est["GAME_DATE_EST"] = pd.to_datetime(games_est["GAME_DATE_EST"])
-    games_est = games_est.set_index(["GAME_ID"])
-    games_est = games_est.sort_index(axis=0)
-
-    team_list = teams["ABBREVIATION"]
-    results_dic = {}
-    for i in team_list:
-        results_dic[str(i)] = []
-
-    for i in range(len(games_est)):
-        for j in team_list:
-
-            if (games_est.iloc[i, 1]) == j:
-                results_dic[j].append(games_est.iloc[i, :])
-            elif (games_est.iloc[i, 2]) == j:
-                results_dic[j].append(games_est.iloc[i, :])
-    results = {}
-
-    for i in team_list:
-        results[i] = pd.DataFrame(results_dic[i])
-
-    print(results[team_abbr])
-
-
-def split_home_away_stats():
-    # Divide every teams points, rebounds and assists for home and away matches
-    team_list = teams["ABBREVIATION"]
-    results_home = {}
-    results_away = {}
-    results = {}
-
-    for i in team_list:
-        results_home[str(i)] = []
-        results_away[str(i)] = []
-
-    for i in team_list:
-        for j in range(len(results[i])):
-            if results[i].iloc[j, 1] == i:
-                results_home[i].append(results[i].iloc[j, :])
-            elif results[i].iloc[j, 2] == i:
-                results_away[i].append(results[i].iloc[j, :])
-    results_home_df = {}
-    results_away_df = {}
-
-    for i in team_list:
-        results_home_df[i] = pd.DataFrame(results_home[i])
-        results_away_df[i] = pd.DataFrame(results_away[i])
-
 
 def blind_plot(df, column, label_col=None, max_plot=5):
     # Function for plotting
