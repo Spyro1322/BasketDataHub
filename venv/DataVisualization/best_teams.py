@@ -73,10 +73,12 @@ def top_teams_plot(team_one, team_two, category):
     fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharex=True)
 
     sns.boxplot(y=category, data=results_home_df[team_one], ax=axes[0])
+    # axes[0].set(xlabel=team_one)
     sns.boxplot(y=category, data=results_home_df[team_two], ax=axes[1])
+    axes[0].set(xlabel=team_one)
+    axes[1].set(xlabel=team_two)
 
     plt.show()
 
 if __name__ == '__main__':
     top_teams_plot()
-
