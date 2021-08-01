@@ -72,10 +72,14 @@ def top_teams_plot(team_one, team_two, category):
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharex=True)
 
-    sns.boxplot(y=category, data=results_away_df[team_one], ax=axes[0])
-    sns.boxplot(y=category, data=results_away_df[team_two], ax=axes[1])
-    axes[0].set(xlabel=team_one)
-    axes[1].set(xlabel=team_two)
+    sns.boxplot(y=category, data=results_home_df[team_one], ax=axes[0]).set_title(f"{category} of {team_one}")
+    sns.boxplot(y=category, data=results_home_df[team_two], ax=axes[1]).set_title(f"{category} of {team_two}")
+
+    # plt.title(f"Comparison of {category} between {team_one} and {team_two}", loc='center')
+    #
+    # axes[0].set(xlabel=team_one)
+    # axes[1].set(xlabel=team_two)
+
 
     plt.show()
 
