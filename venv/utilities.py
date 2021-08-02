@@ -7,6 +7,7 @@ from math import pi
 
 # import seaborn as sns
 
+details = pd.read_csv('../Data/games_details.csv')
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
 
@@ -45,7 +46,6 @@ def print_missing_values(df):
 def dataset_overview(df):
     # A general overview
     print_missing_values(df)
-
 
 
 def blind_plot(df, column, label_col=None, max_plot=5):

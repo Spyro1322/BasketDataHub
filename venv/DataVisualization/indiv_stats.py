@@ -16,9 +16,9 @@ def indiv_stats(name, cat):
     plt.figure(figsize=(10, 8))
     plt.xlabel(cat, fontsize=10)
     plt.ylabel('Number of Games', fontsize=10)
-    plt.title('Career Benchmarks of %s' ' in %s' % (name, cat))
+    plt.title('Career Performance of %s' ' in %s' % (name, cat))
     sns.violinplot(person[cat])
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=0)
     plt.show()
 
 if __name__ == '__main__':
