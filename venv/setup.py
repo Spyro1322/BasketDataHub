@@ -27,6 +27,7 @@ setup(
             'DataVisualization=DataVisualization.players_comparison:show_stats',
             'DataVisualization=DataVisualization.team_stats:compare_stats',
             'DataVisualization=DataVisualization.best_teams:top_teams_plot',
+            'DataVisualization=DataVisualization.scatters:plot_scatters',
 
         ],
     },

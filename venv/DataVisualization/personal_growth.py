@@ -24,29 +24,27 @@ def growth_plots(player_one, player_two, category):
     stats1 = person1.merge(games_date1, on="GAME_ID", how="left")
     seasonal_stats1 = stats1.groupby("SEASON").sum()/stats1.groupby("SEASON").count()
 
-    person2 = details[details["PLAYER_NAME"] == player_one]
+    person2 = details[details["PLAYER_NAME"] == player_two]
     person2.drop(["TEAM_ID", "TEAM_CITY", "PLAYER_ID", "PLAYER_NAME", "COMMENT"], axis=1, inplace=True)
     games_date2 = games[["GAME_DATE_EST", "GAME_ID", "SEASON"]]
 
     stats2 = person2.merge(games_date2, on="GAME_ID", how="left")
     seasonal_stats2 = stats2.groupby("SEASON").sum()/stats2.groupby("SEASON").count()
 
-    y1 = seasonal_stats1[category]
-    x1 = seasonal_stats1.index.map(str)
+    # fig, ax = plt.subplots(1, 1, figsize=(18, 7))
 
-    y2 = seasonal_stats2[category]
-    x2 = seasonal_stats2.index.map(str)
+    fig, axes = plt.subplots(1, 2, figsize=(15, 5))
+    # fig.suptitle("Bron's PPG Each Season", fontsize=20)
+    sns.lineplot(x=seasonal_stats1[category], y=seasonal_stats1.index.map(str), ax=axes[0])
+    sns.lineplot(x=seasonal_stats2[category], y=seasonal_stats2.index.map(str), ax=axes[1])
 
-    fig, ax = plt.subplots()
-
+    axes[1].tick_params(axis='x', labelrotation=45)
     # sns.barplot(x=seasonal_stats[category], y=seasonal_stats.index.map(str), ax=axes[0])
-    ax.plot(y1, x1, color = 'green', label = player_one)
-    ax.plot(y2, x2, color = 'red', label = player_two)
     # plt.figure(figsize=(15, 5))
-    # plt.title(f"{category} Each Season (Per Game Statistics)", fontsize=20)
+    plt.title(f"{category} Each Season (Per Game Statistics)", fontsize=20)
 
     # plt.xticks(axis='x', labelrotation=45)
-    plt.legend()
+    # plt.legend()
     plt.show()
 
 if __name__ == '__main__':
