@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 from math import pi
 
 # import seaborn as sns
@@ -13,8 +14,6 @@ teams = pd.read_csv('../Data/teams.csv')
 
 games = games.dropna()
 
-def read_df(dframe):
-    dframe = pd.read_csv('../Data/%s' %(dframe))
 
 def rename_df(df, col_dict):
     cols = df.columns
@@ -58,12 +57,24 @@ def blind_plot(df, column, label_col=None, max_plot=5):
         x = top_df[label_col]
     gold, silver, bronze, other = ('#FFA400', '#bdc3c7', '#cd7f32', '#3498db')
     colors = [gold if i == 0 else silver if i == 1 else bronze if i == 2 else other for i in range(0, len(top_df))]
-    fig, ax = plt.subplots(figsize=(18, 7))
+    fig, ax = plt.subplots(figsize=(15, 5))
     ax.bar(x, height, color=colors)
-    plt.xticks(x, x, rotation=60)
+    plt.xticks(x, x, rotation=0)
     plt.xlabel(label_col)
     plt.ylabel(column)
     plt.title(f'Top {max_plot} of {column}')
+    plt.show()
+
+def plot_top(stat, top_num):
+    best_df = details.groupby(by='PLAYER_NAME')[stat].sum().sort_values(ascending=False).head(top_num).reset_index()
+    plt.figure(figsize=(15, 10))
+    plt.xlabel(stat, fontsize=15)
+    plt.ylabel('PLAYER_NAME', fontsize=15)
+    plt.title(f'Top {top_num} Players in {stat} in the NBA League', fontsize=20)
+    ax = sns.barplot(x=best_df[stat], y=best_df['PLAYER_NAME'])
+    for i, (value, name) in enumerate(zip(best_df[stat], best_df['PLAYER_NAME'])):
+        ax.text(value, i - .05, f'{value:,.0f}', size=10, ha='left', va='center')
+    ax.set(xlabel=stat, ylabel='PLAYER_NAME')
     plt.show()
 
 

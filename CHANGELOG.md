@@ -255,3 +255,6 @@ be very useful later in the process.
 
 ### 2021-07-29
 * Proceeding with best_teams.py, trying to improve its structure and flow, to reach the best result.
+
+### 2021-08-23
+* After some bibliography safari we returned to our DataVisualization with some changes in top20.py mostly.
