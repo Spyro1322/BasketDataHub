@@ -5,28 +5,28 @@ import numpy as np
 import seaborn as sns
 import click
 
-# Dataframes - dfs, games.csv is interesting enough in combination with the others that have already been used
-games_details = pd.read_csv('../Data/games_details.csv')
+# Dataframes - gamess, games.csv is interesting enough in combination with the others that have already been used
 games = pd.read_csv('../Data/games.csv')
-teams = pd.read_csv('../Data/teams.csv')
+
+games=games.dropna()
 
 @click.command()
-@click.argument('df', type=str)
-@click.argument('category', type=str, nargs=-1)
-def hist_plot(df, category):
+# @click.argument('games', type=str)
+@click.argument('category', type=str, nargs=1)
+def hist_plot(category):
     # Plotting function for histograms per given stat category
 
     sns.set_palette("rocket")
-    for cats in category:
-        plt.hist(df[cats], bins=int(np.sqrt(len(df[cats]))))
-        plt.xlabel("Number of %s" %(cats))
-        plt.ylabel("Number of games")
-        plt.title("Number of %s made" %(cats))
-        plt.show()
-        mean_h = np.mean(df[cats])
-        std_h=np.std(df[cats])
 
-        print("mean:", mean_h, "std:", std_h)
+    plt.hist(games[category], bins=int(np.sqrt(len(games[category]))))
+    plt.xlabel("Number of %s" %(category))
+    plt.ylabel("Number of games")
+    plt.title("Number of %s made" %(category))
+    plt.show()
+    mean_h = np.mean(games[category])
+    std_h=np.std(games[category])
+
+    print("mean:", mean_h, "std:", std_h)
 
 if __name__ == '__main__':
     hist_plot()

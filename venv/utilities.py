@@ -46,6 +46,13 @@ def dataset_overview(df):
     # A general overview
     print_missing_values(df)
 
+def double_box(df, arg1, arg2, category, size=(int, int)):
+    sns.set_palette("Paired")
+    fig, axes = plt.subplots(1, 2, figsize=size, sharex=True)
+    sns.boxplot(y=category, data=df[arg1], ax=axes[0]).set_title(f"{category} of {arg1}")
+    sns.boxplot(y=category, data=df[arg2], ax=axes[1]).set_title(f"{category} of {arg2}")
+    plt.show()
+
 
 def blind_plot(df, column, label_col=None, max_plot=5):
     # Function for plotting

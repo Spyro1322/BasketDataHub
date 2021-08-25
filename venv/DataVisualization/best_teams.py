@@ -67,21 +67,8 @@ for i in team_list:
 @click.argument('team_two', type=str, nargs=1)
 @click.argument('category', type=str, nargs=1)
 def top_teams_plot(team_one, team_two, category):
+    double_box(df=results_home_df, arg1=team_one, arg2=team_two, category=category, size=(10, 4))
 
-    sns.set_palette("Paired")
-
-    fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharex=True)
-
-    sns.boxplot(y=category, data=results_home_df[team_one], ax=axes[0]).set_title(f"{category} of {team_one}")
-    sns.boxplot(y=category, data=results_home_df[team_two], ax=axes[1]).set_title(f"{category} of {team_two}")
-
-    # plt.title(f"Comparison of {category} between {team_one} and {team_two}", loc='center')
-    #
-    # axes[0].set(xlabel=team_one)
-    # axes[1].set(xlabel=team_two)
-
-
-    plt.show()
 
 if __name__ == '__main__':
     top_teams_plot()

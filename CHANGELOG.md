@@ -258,3 +258,6 @@ be very useful later in the process.
 
 ### 2021-08-23
 * After some bibliography safari we returned to our DataVisualization with some changes in top20.py mostly.
+
+### 2021-08-25
+* Going to simplify some work with new reusable functions.

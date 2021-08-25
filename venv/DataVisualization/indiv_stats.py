@@ -16,8 +16,8 @@ def indiv_stats(name, cat):
     plt.figure(figsize=(10, 8))
     plt.xlabel(cat, fontsize=10)
     plt.ylabel('Number of Games', fontsize=10)
-    plt.title('Career Performance of %s' ' in %s' % (name, cat))
-    sns.violinplot(person[cat])
+    plt.title(f'Career Performance of {name} in {cat}')
+    sns.violinplot(person[cat], inner="box", palette="pastel", color="cyan")
     plt.xticks(rotation=0)
     plt.show()
 
