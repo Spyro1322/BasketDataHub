@@ -11,6 +11,7 @@ details = pd.read_csv('../Data/games_details.csv')
 
 details = details.drop_duplicates(subset=["GAME_ID", "PLAYER_NAME"])
 
+
 @click.command()
 @click.argument('player_one', type=str)
 @click.argument('player_two', type=str)
@@ -31,20 +32,18 @@ def growth_plots(player_one, player_two, category):
     stats2 = person2.merge(games_date2, on="GAME_ID", how="left")
     seasonal_stats2 = stats2.groupby("SEASON").sum()/stats2.groupby("SEASON").count()
 
-    # fig, ax = plt.subplots(1, 1, figsize=(18, 7))
-
     fig, axes = plt.subplots(1, 2, figsize=(15, 5))
-    # fig.suptitle("Bron's PPG Each Season", fontsize=20)
-    sns.lineplot(x=seasonal_stats1[category], y=seasonal_stats1.index.map(str), ax=axes[0])
-    sns.lineplot(x=seasonal_stats2[category], y=seasonal_stats2.index.map(str), ax=axes[1])
 
+    axes[0].set_title(f"{player_one}", ha='center', fontsize=15)
+    sns.lineplot(y=seasonal_stats1[category], x=seasonal_stats1.index.map(str), ax=axes[0], color='red')
+
+    axes[1].set_title(f"{player_two}", ha='center', fontsize=15)
+    sns.lineplot(y=seasonal_stats2[category], x=seasonal_stats2.index.map(str), ax=axes[1], color='cyan')
+
+    axes[0].tick_params(axis='x', labelrotation=45)
     axes[1].tick_params(axis='x', labelrotation=45)
-    # sns.barplot(x=seasonal_stats[category], y=seasonal_stats.index.map(str), ax=axes[0])
-    # plt.figure(figsize=(15, 5))
-    plt.title(f"{category} Each Season (Per Game Statistics)", fontsize=20)
 
-    # plt.xticks(axis='x', labelrotation=45)
-    # plt.legend()
+    fig.suptitle(f"{category} Each Season (Per Game Statistics)", fontsize=20)
     plt.show()
 
 if __name__ == '__main__':

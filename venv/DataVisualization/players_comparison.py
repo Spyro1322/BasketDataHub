@@ -21,19 +21,14 @@ other_var = ['REB', 'AST', 'STL', 'PF', 'BLK']
 
 
 @click.command()
-# @click.option('--get_players_stats', type=(str, str))
 @click.argument('player_one', type=str)
 @click.argument('player_two', type=str)
 def show_stats(player_one, player_two):
-    # player_one, player_two = get_players_stats
-    # Function for players' stats
+    # Function for players' stats comparison with radar plot
+
     # Remove players that didn't played at a game
     df_tmp = games_details[~games_details['MIN'].isna()]
     del df_tmp['MIN']
-
-    # # Define key statistics columns, one for percentage variable and one for other important statistics
-    # prct_var = ['FG_PCT', 'FG3_PCT', 'FT_PCT']
-    # other_var = ['REB', 'AST', 'STL', 'PF', 'BLK']
 
     player_one_df = df_tmp[df_tmp['PLAYER_NAME'] == player_one]
     player_two_df = df_tmp[df_tmp['PLAYER_NAME'] == player_two]

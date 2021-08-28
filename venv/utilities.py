@@ -9,6 +9,8 @@ from math import pi
 # import seaborn as sns
 
 details = pd.read_csv('../Data/games_details.csv')
+details = details.drop_duplicates(subset=["GAME_ID", "PLAYER_NAME"])
+
 games = pd.read_csv('../Data/games.csv')
 teams = pd.read_csv('../Data/teams.csv')
 
@@ -45,6 +47,24 @@ def print_missing_values(df):
 def dataset_overview(df):
     # A general overview
     print_missing_values(df)
+
+def build_player_df(name):
+    # Make a dataframe for any given player with all his seasons.
+    person = details[details["PLAYER_NAME"] == name]
+    person.drop(["TEAM_ID", "TEAM_CITY", "PLAYER_ID", "PLAYER_NAME", "COMMENT"], axis=1, inplace=True)
+    games_date = games[["GAME_DATE_EST", "GAME_ID", "SEASON"]]
+
+    stats = person.merge(games_date, on="GAME_ID", how="left")
+    seasonal_stats = stats.groupby("SEASON").sum() / stats.groupby("SEASON").count()
+
+def count_wins(name):
+    player_details = pd.merge(games, details[details.PLAYER_NAME == name], on="GAME_ID")
+    player_details["home"] = player_details["TEAM_ID"] == player_details["TEAM_ID_home"]
+    player_details[(player_details["home"] & (player_details["PTS_home"] > player_details["PTS_away"]))]
+    player_details["WIN"] = (player_details["home"] & (player_details["PTS_home"] > player_details["PTS_away"])) | (
+            (player_details["home"] == False) & (player_details["PTS_home"] < player_details["PTS_away"]))
+    return player_details
+
 
 def double_box(df, arg1, arg2, category, size=(int, int)):
     sns.set_palette("Paired")

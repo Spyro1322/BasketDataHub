@@ -261,3 +261,6 @@ be very useful later in the process.
 
 ### 2021-08-25
 * Going to simplify some work with new reusable functions.
+
+### 2021-08-28
+* New graphs, new additions/changes in existing code. 
