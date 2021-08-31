@@ -264,3 +264,8 @@ be very useful later in the process.
 
 ### 2021-08-28
 * New graphs, new additions/changes in existing code. 
+
+### 2021-08-31
+* Added a new file on three point shooting graphs and kept on searching for new visualization ideas(players & teams).
+
+* Made a few changes in existing file(personal_growth).

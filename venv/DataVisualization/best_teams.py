@@ -62,6 +62,7 @@ for i in team_list:
     results_home_df[i] = pd.DataFrame(results_home[i])
     results_away_df[i] = pd.DataFrame(results_away[i])
 
+
 @click.command()
 @click.argument('team_one', type=str, nargs=1)
 @click.argument('team_two', type=str, nargs=1)
