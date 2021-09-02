@@ -269,3 +269,6 @@ be very useful later in the process.
 * Added a new file on three point shooting graphs and kept on searching for new visualization ideas(players & teams).
 
 * Made a few changes in existing file(personal_growth).
+
+### 2021-09-02
+* Experimenting with plotly.express and plotly.graph_objects.
