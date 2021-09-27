@@ -130,13 +130,13 @@ def column_distribution(df, nShown, nPerRow):
     plt.show()
 
 
-def correlation_matrix(df, graphWidth):
+
+def plotCorrelationMatrix(df, graphWidth):
     # Correlation matrix
     filename = df
     # drop columns with NaN
     df = df.dropna('columns')
-    # keep columns where there are more than 1 unique values
-    df = df[[col for col in df if df[col].nunique() > 1]]
+    df = df[[col for col in df if df[col].nunique() > 1]] # keep columns where there are more than 1 unique values
     if df.shape[1] < 2:
         print(f'No correlation plots shown: The number of non-NaN or constant columns ({df.shape[1]}) is less than 2')
         return
@@ -149,7 +149,6 @@ def correlation_matrix(df, graphWidth):
     plt.colorbar(corrMat)
     plt.title(f'Correlation Matrix for {filename}', fontsize=15)
     plt.show()
-
 
 def scatter_matrix(df, plotSize, textSize):
     # Scatter and density plots

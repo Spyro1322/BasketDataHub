@@ -272,3 +272,10 @@ be very useful later in the process.
 
 ### 2021-09-02
 * Experimenting with plotly.express and plotly.graph_objects.
+
+### 2021-09-27
+* We shall proceed to data cleaning & feature engineering. Based on previous research we will choose to work with teams'
+overall stats in home and away games. With that in mind we start with games.csv to check how much useful information we 
+can extract.
+
+* Firstly, Pearson Correlation with heatmaps.
