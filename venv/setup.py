@@ -30,6 +30,8 @@ setup(
             'DataVisualization=DataVisualization.scatters:plot_scatters',
             'DataVisualization=DataVisualization.3pt_significance:threes_study',
             'DataVisualization=DataVisualization.express&go:compare_players',
+            'Classification=Classification.dummy&gaussian_nb:team_dummy',
+
         ],
     },
 )

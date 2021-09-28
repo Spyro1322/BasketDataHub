@@ -279,3 +279,8 @@ overall stats in home and away games. With that in mind we start with games.csv 
 can extract.
 
 * Firstly, Pearson Correlation with heatmaps.
+
+### 2021-09-28
+* Begin to work on Classification models. Created new directory named Classification.
+
+* Start with Dummy Classifier and Gaussian Naive Bayes with games.csv
