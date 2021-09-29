@@ -33,11 +33,11 @@ teams_stats_cols = {
 }
 
 home_team = team_stats.drop(
-    columns=["GAME_DATE_EST", "GAME_ID", "GAME_STATUS_TEXT", "HOME_TEAM_ID", "VISITOR_TEAM_ID", "SEASON",
+    columns=["GAME_DATE_EST", "GAME_ID", "GAME_STATUS_TEXT", "HOME_TEAM_ID", "VISITOR_TEAM_ID",
              "TEAM_ID_home", "TEAM_ID_away", "PTS_away", "FG_PCT_away", "FT_PCT_away", "FG3_PCT_away", "AST_away",
              "REB_away"])
 
 away_team = team_stats.drop(
-    columns=["GAME_DATE_EST", "GAME_ID", "GAME_STATUS_TEXT", "HOME_TEAM_ID", "VISITOR_TEAM_ID", "SEASON",
+    columns=["GAME_DATE_EST", "GAME_ID", "GAME_STATUS_TEXT", "HOME_TEAM_ID", "VISITOR_TEAM_ID",
              "TEAM_ID_home", "TEAM_ID_away", "PTS_home", "FG_PCT_home", "FT_PCT_home", "FG3_PCT_home", "AST_home",
              "REB_home"])

@@ -7,7 +7,6 @@ from sklearn.naive_bayes import GaussianNB
 from helpers import *
 import click
 
-
 # Work on home_team and away_team df from games.csv
 features1 = home_team
 features1 = features1.dropna(axis=1)
@@ -21,7 +20,6 @@ dc_constant_0 = DummyClassifier(strategy="constant", constant=0)
 dc_constant_1 = DummyClassifier(strategy="constant", constant=1)
 dc_most_frequent = DummyClassifier(strategy="most_frequent")
 dc_stratified = DummyClassifier(strategy="stratified")
-gnb = GaussianNB()
 
 
 @click.command()
@@ -47,9 +45,6 @@ def team_dummy(home):
 
         model_strat = dc_stratified.fit(train1, train_labels1)
         home_team_accuracy['stratified'] = dc_stratified.score(test1, test_labels1)
-
-        model_gnb = gnb.fit(train1, train_labels1)
-        home_team_accuracy['gaussian naive bayes'] = gnb.score(test1, test_labels1)
 
         print("Classification Accuracy on the Home Team Dataset (40% test set)\n")
         sorted_accuracy = [(k, home_team_accuracy[k]) for k in sorted(home_team_accuracy, key=home_team_accuracy.get,
@@ -77,9 +72,6 @@ def team_dummy(home):
 
         model_strat = dc_stratified.fit(train2, train_labels2)
         away_team_accuracy['stratified'] = dc_stratified.score(test2, test_labels2)
-
-        model_gnb = gnb.fit(train2, train_labels2)
-        away_team_accuracy['gaussian naive bayes'] = gnb.score(test2, test_labels2)
 
         print("Classification Accuracy on the Home Team Dataset (40% test set)\n")
         sorted_accuracy = [(k, away_team_accuracy[k]) for k in sorted(away_team_accuracy, key=away_team_accuracy.get,

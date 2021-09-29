@@ -12,7 +12,12 @@ team_stats = pd.read_csv('../Data/games.csv')
 # We only keep game stats significant for our visualizations
 # and delete NaN values
 team_stats.dropna(inplace=True)
+team_stats.drop_duplicates(keep="first", inplace=True)
 
-fig, ax = plt.subplots(figsize=(11, 9))
-sns.heatmap(away_team.corr(), cmap='coolwarm', annot=True)
+print(f"There is still {team_stats.isna().sum().sum()} null values.\n")
+
+
+fig, ax = plt.subplots(1, 2, figsize=(11, 9))
+sns.heatmap(ax=ax[0], data=home_team.corr(), cmap='coolwarm', annot=True)
+sns.heatmap(ax=ax[1], data=away_team.corr(), cmap='coolwarm', annot=True)
 plt.show()

@@ -284,3 +284,9 @@ can extract.
 * Begin to work on Classification models. Created new directory named Classification.
 
 * Start with Dummy Classifier and Gaussian Naive Bayes with games.csv
+
+### 2021-09-29
+* Firstly, we have to separate our data based on season, in order to split train, validation and test sets for our 
+models.
+
+* Today we see K-nearest neighbours algorithm.

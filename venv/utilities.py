@@ -6,12 +6,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from math import pi
 
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from adjustText import adjust_text
+
+
 # import seaborn as sns
 
 details = pd.read_csv('../Data/games_details.csv')
 details = details.drop_duplicates(subset=["GAME_ID", "PLAYER_NAME"])
 
-games = pd.read_csv('../Data/games.csv')
+games = pd.read_csv('../Data/games.csv')[["GAME_ID", "SEASON"]]
 teams = pd.read_csv('../Data/teams.csv')
 
 games = games.dropna()
@@ -48,6 +53,7 @@ def dataset_overview(df):
     # A general overview
     print_missing_values(df)
 
+
 def build_player_df(name):
     # Make a dataframe for any given player with all his seasons.
     person = details[details["PLAYER_NAME"] == name]
@@ -56,6 +62,7 @@ def build_player_df(name):
 
     stats = person.merge(games_date, on="GAME_ID", how="left")
     seasonal_stats = stats.groupby("SEASON").sum() / stats.groupby("SEASON").count()
+
 
 def count_wins(name):
     player_details = pd.merge(games, details[details.PLAYER_NAME == name], on="GAME_ID")
@@ -91,6 +98,7 @@ def blind_plot(df, column, label_col=None, max_plot=5):
     plt.ylabel(column)
     plt.title(f'Top {max_plot} of {column}')
     plt.show()
+
 
 def plot_top(stat, top_num):
     best_df = details.groupby(by='PLAYER_NAME')[stat].sum().sort_values(ascending=False).head(top_num).reset_index()
@@ -130,13 +138,12 @@ def column_distribution(df, nShown, nPerRow):
     plt.show()
 
 
-
 def plotCorrelationMatrix(df, graphWidth):
     # Correlation matrix
     filename = df
     # drop columns with NaN
     df = df.dropna('columns')
-    df = df[[col for col in df if df[col].nunique() > 1]] # keep columns where there are more than 1 unique values
+    df = df[[col for col in df if df[col].nunique() > 1]]  # keep columns where there are more than 1 unique values
     if df.shape[1] < 2:
         print(f'No correlation plots shown: The number of non-NaN or constant columns ({df.shape[1]}) is less than 2')
         return
@@ -150,6 +157,7 @@ def plotCorrelationMatrix(df, graphWidth):
     plt.title(f'Correlation Matrix for {filename}', fontsize=15)
     plt.show()
 
+
 def scatter_matrix(df, plotSize, textSize):
     # Scatter and density plots
     # keep only numerical columns
@@ -161,7 +169,8 @@ def scatter_matrix(df, plotSize, textSize):
     ax = pd.plotting.scatter_matrix(df, alpha=1.0, figsize=[plotSize, plotSize], diagonal='kde')
     corrs = df.corr().values
     for i, j in zip(*plt.np.triu_indices_from(ax, k=1)):
-        ax[i, j].annotate('Corr. coef = %.3f' % corrs[i, j], (0.8, 0.2), xycoords='axes fraction', ha='center', va='center', size=textSize)
+        ax[i, j].annotate('Corr. coef = %.3f' % corrs[i, j], (0.8, 0.2), xycoords='axes fraction', ha='center',
+                          va='center', size=textSize)
     plt.suptitle('Scatter and Density Plot')
     plt.show()
 
@@ -175,7 +184,7 @@ def convert_min(x):
     if len(x) < 2:
         return int(x[0])
     else:
-        return int(x[0])*60+int(x[1])
+        return int(x[0]) * 60 + int(x[1])
 
 
 def radar_plot(ax, df, max_val=1):
@@ -220,3 +229,66 @@ def pearson_r(x, y):
     # Compute correlation matrix: corr_mat
     corr_mat = np.corrcoef(x, y)
     return corr_mat[0, 1]
+
+
+def get_season(date):
+    '''
+    Returns the season based on the month and year of a date
+    '''
+    date = pd.to_datetime(date, format='%Y-%m-%d')
+    if (date.month >= 10):
+        season = date.year
+    else:
+        season = date.year - 1
+    return season
+
+
+def get_season_data(season):
+    '''
+    Aggregates the details data into yearly figures
+    Returns the aggregated data and the standardised aggregated data
+    '''
+    global games
+    details[["MINS", "SECS"]] = details.MIN.str.extract(r"([^:]+):(.*)")
+    details.loc[(~details.MIN.str.contains(':', na=True)), 'SECS'] = details.MIN
+    details.MINS = pd.to_numeric(details.MINS)
+    details.SECS = pd.to_numeric(details.SECS)
+    details['PLAY_TIME'] = np.round(details.MINS.fillna(0) + details.SECS / 60)
+
+    # games = games.loc[~games[['GAME_ID', 'GAME_DATE_EST']].duplicated()]  # Leaving one entry per game
+    # games['GAME_DATE_EST'] = pd.to_datetime(games.GAME_DATE_EST)
+
+    temp = details.loc[details.GAME_ID.isin(games.loc[games.SEASON == season, 'GAME_ID'])]
+    temp = temp.loc[~temp['PLAY_TIME'].isnull()]
+    agg_df = temp.groupby(['PLAYER_ID', 'PLAYER_NAME'])[
+        ['FGA', 'FGM', 'FG3A', 'FG3M', 'FTA', 'FTM', 'OREB', 'DREB', 'AST', 'STL', 'BLK', 'TO', 'PF',
+         'PLAY_TIME']].sum().reset_index()
+    agg_df = agg_df.loc[agg_df['PLAY_TIME'] >= 1500].reset_index(drop=True)
+    st_agg_df = StandardScaler().fit_transform(
+        agg_df.drop(columns=['PLAYER_ID', 'PLAYER_NAME', 'PLAY_TIME']))
+    return agg_df, st_agg_df
+
+
+def pca_plots(season, ax=None):
+
+    # Performs PCA on season data
+    # Calculates the top players based on the 2 PCs
+    # Creates a scatter plot for visualising the season data
+    pca = PCA(n_components=2)
+    agg_df, st_agg_df = get_season_data(season)
+    trainPCA = pca.fit_transform(st_agg_df)
+
+    overall = trainPCA.sum(axis=1)
+    top_overall = np.argpartition(overall, -4)[-4:]
+    top_pc1 = np.argpartition(trainPCA[:, 0], -4)[-4:]
+    top_pc2 = np.argpartition(trainPCA[:, 1], -4)[-4:]
+    top_pc = list(set(list(top_pc1) + list(top_pc2) + list(top_overall)))
+
+
+    ax.scatter(trainPCA[:, 0], trainPCA[:, 1])
+    ax.axhline(y=0, color='green', linestyle='--', lw=1)
+    ax.axvline(x=0, color='green', linestyle='--', lw=1)
+    texts = [ax.text(x=trainPCA[i, 0], y=trainPCA[i, 1], s=agg_df.PLAYER_NAME[i]) for i in top_pc]
+    adjust_text(texts, ax=ax, arrowprops=dict(arrowstyle="-", color='k', lw=0.5))
+    _ = ax.set_title(str(season))
+
