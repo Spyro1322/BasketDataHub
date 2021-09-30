@@ -1,0 +1,62 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import classification_report
+from helpers import *
+
+# Read the data
+df = pd.read_csv('../Data/games_details.csv')
+seasons = pd.read_csv('../Data/games.csv')[["GAME_ID", "SEASON"]]
+
+df.drop(["GAME_ID", "TEAM_ID", "PLAYER_ID"], axis=1).describe().transpose()
+df.drop_duplicates(subset=["GAME_ID", "PLAYER_ID"], keep="first", inplace=True)
+
+df = df.groupby(["GAME_ID", "TEAM_ID"]).sum()
+df = df.reset_index()
+df = df.drop(['PLAYER_ID', 'FG_PCT', 'FG3_PCT', 'FT_PCT', 'PLUS_MINUS'], axis=1)
+
+df["FG_PCT"] = df["FGM"]/df["FGA"]*100
+df["FG3_PCT"] = df["FG3M"]/df["FG3A"]*100
+df["FT_PCT"] = df["FTM"]/df["FTA"]*100
+
+# dropping the null row
+
+df = df.drop(index=335, axis=0)
+df = df.reset_index().drop("index", axis=1)
+
+df = df.sort_values(
+    "GAME_ID")  # Sort the rows by GAME_ID, it is an extra check to avoid any bug in the next rows of the code
+df["VICTORY"] = ""
+
+for i in range(0, len(df) - 1, 2):
+    if df["PTS"][i] > df["PTS"][i + 1]:  # Check which of the two team has won and update the "VICTORY" column
+        df.loc[i, "VICTORY"] = "Yes"
+        df.loc[i + 1, "VICTORY"] = "No"
+
+    elif df["PTS"][i + 1] < df["PTS"][i]:
+        df.loc[i, "VICTORY"] = "No"
+        df.loc[i + 1, "VICTORY"] = "Yes"
+
+
+df = pd.merge(df, seasons, how="left", on="GAME_ID")
+
+
+X1 = df.drop(["SEASON", "VICTORY", "GAME_ID", "TEAM_ID"], axis=1)
+y1 = df["VICTORY"]
+
+# Split our data
+X_train, X_test, y1_train, y1_test = train_test_split(X1, y1, test_size=0.3)
+
+gnb = GaussianNB()
+gnb.fit(X_train, y1_train)
+
+# making predictions on the testing set
+y1_pred = gnb.predict(X_test)
+
+# comparing actual response values (y_test) with predicted response values (y_pred)
+print("Gaussian Naive Bayes model accuracy(in %):", accuracy_score(y1_test, y1_pred))
+# print(gnb.score(test, test_labels))
+print(f"These are the results for the model\n")
+print(classification_report(y1_test, y1_pred))
