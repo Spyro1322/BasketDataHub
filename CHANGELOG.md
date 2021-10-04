@@ -290,3 +290,7 @@ can extract.
 models.
 
 * Today we see K-nearest neighbours algorithm.
+
+### 2021-10-04
+* Summing up the previous week : creation of knn algorithm both on games.csv and games_details.csv with 5-fold cross
+validation. Added a couple of plots about them.

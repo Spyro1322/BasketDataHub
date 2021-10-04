@@ -104,6 +104,7 @@ model_third_split.fit(X3_train, y3_train)
 # Predict
 
 y3_pred = model_third_split.predict(X3_test)
+
 print("These are the results for the first model (2003-2006)\n")
 print(classification_report(y1_test, y1_pred))
 
