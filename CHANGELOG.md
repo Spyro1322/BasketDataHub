@@ -294,3 +294,5 @@ models.
 ### 2021-10-04
 * Summing up the previous week : creation of knn algorithm both on games.csv and games_details.csv with 5-fold cross
 validation. Added a couple of plots about them.
+
+* As a new week starts we want to check how useful gridsearch may be for our models. We begin with knn and we shall see.
