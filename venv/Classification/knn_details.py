@@ -1,12 +1,19 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn import neighbors
+from sklearn.preprocessing import StandardScaler
+import time
+
 
 from helpers import *
+
+# vthreshold = [0, 4000, 8000, 12000] #προσαρμόζουμε τις τιμές μας στο variance που παρατηρήσαμε
+# n_components = [10, 20, 30, 40, 50, 60]
 
 # Read the data
 df = pd.read_csv('../Data/games_details.csv')
@@ -51,33 +58,57 @@ y1 = df["VICTORY"]
 # Split our data
 X_train, X_test, y1_train, y1_test = train_test_split(X1, y1, test_size=0.3)
 
+# Scaling features
+scaler = StandardScaler()
+scaler.fit(X_train)
+x_train = scaler.transform(X_train)
+x_test = scaler.transform(X_test)
 
-myList = list(range(1, 50))
-# Κρατάμε μόνο τα περιττά k
-neighbors = list(filter(lambda x: x % 2 != 0, myList))
-# empty list that will hold cv scores
-cv_scores = []
-# perform 5-fold cross validation
-for k in neighbors:
-    knn = KNeighborsClassifier(n_neighbors=k)
-    scores = cross_val_score(knn, X_train, y1_train, cv=5, scoring='accuracy')
-    cv_scores.append(scores.mean())
-
-# το σφάλμα είναι το αντίστροφο της πιστότητας
-mean_error = [1 - x for x in cv_scores]
-
-# plot misclassification error vs k
-plt.plot(neighbors, mean_error)
-plt.xlabel('Number of Neighbors K')
-plt.ylabel('Misclassification Error')
-plt.show()
+# myList = list(range(1, 50))
+# # Κρατάμε μόνο τα περιττά k
+# neighbors = list(filter(lambda x: x % 2 != 0, myList))
+# # empty list that will hold cv scores
+# cv_scores = []
+# # perform 5-fold cross validation
+# for k in neighbors:
+#     knn = KNeighborsClassifier(n_neighbors=k)
+#     scores = cross_val_score(knn, X_train, y1_train, cv=5, scoring='accuracy')
+#     cv_scores.append(scores.mean())
+#
+# # το σφάλμα είναι το αντίστροφο της πιστότητας
+# mean_error = [1 - x for x in cv_scores]
+#
+# # plot misclassification error vs k
+# plt.plot(neighbors, mean_error)
+# plt.xlabel('Number of Neighbors K')
+# plt.ylabel('Misclassification Error')
+# plt.show()
 
 # determining best k
-optimal_k = neighbors[mean_error.index(min(mean_error))]
-print("The optimal number of neighbors (calculated in the training set) is %d" % optimal_k)
+# optimal_k = neighbors[mean_error.index(min(mean_error))]
+# print("The optimal number of neighbors (calculated in the training set) is %d" % optimal_k)
 
 # για το optimal k παίρνουμε και τα αποτέλεσματα στο test set
-knn = KNeighborsClassifier(n_neighbors=optimal_k)
-knn.fit(X_train, y1_train)
-pred = knn.predict(X_test)
-print("\nOptimal accuracy on the test set is", accuracy_score(y1_test, pred), "with k=", optimal_k)
+# knn = KNeighborsClassifier(n_neighbors=optimal_k)
+# knn.fit(X_train, y1_train)
+# pred = knn.predict(X_test)
+# print("\nOptimal accuracy on the test set is", accuracy_score(y1_test, pred), "with k=", optimal_k)
+# k = [1, 6, 11, 21, 31, 41] # η υπερπαράμετρος του ταξινομητή
+
+clf = neighbors.KNeighborsClassifier()
+# η παράμετρος n_jobs = 1 χρησιμοποιεί όλους τους πυρήνες του υπολογιστή
+params = {'n_neighbors': np.arange(1, 30),
+         'leaf_size':list(range(1, 50, 5))}
+estimator = GridSearchCV(clf, param_grid=params, cv=5, scoring='f1_macro', n_jobs=-1)
+
+
+# gs = GridSearchCV(clf, param_grid=params, cv=5, scoring="accuracy")
+# gs.fit(x_train, y1_train)
+
+start_time = time.time()
+estimator.fit(X_train, y1_train)
+preds = estimator.predict(X_test)
+print("Συνολικός χρόνος fit και predict: %s seconds" % (time.time() - start_time))
+print(classification_report(y1_test, preds))
+print(estimator.best_estimator_)
+print(estimator.best_params_)
