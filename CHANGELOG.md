@@ -298,3 +298,7 @@ models.
 validation. Added a couple of plots about them.
 
 * As a new week starts we want to check how useful gridsearch may be for our models. We begin with knn and we shall see.
+
+### 2021-10-05
+* In order to improve our results we decided to split the training set into train and validation set. Gridsearch method
+still remains the preferable way for the hyperparameters calculation. 
