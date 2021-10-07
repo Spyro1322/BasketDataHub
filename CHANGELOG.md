@@ -302,3 +302,10 @@ validation. Added a couple of plots about them.
 ### 2021-10-05
 * In order to improve our results we decided to split the training set into train and validation set. Gridsearch method
 still remains the preferable way for the hyperparameters calculation. 
+
+### 2021-10-07
+* Proceed the project with SVM model and games.csv . We have once again used train, validation, test splits and 
+GridSearch CV for the hyperparameters calculation.
+
+* Some of the results have been added with screenshots in our Results folder. Continue with further investigation for 
+the best possible report matrix.
