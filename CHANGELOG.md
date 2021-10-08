@@ -307,5 +307,8 @@ still remains the preferable way for the hyperparameters calculation.
 * Proceed the project with SVM model and games.csv . We have once again used train, validation, test splits and 
 GridSearch CV for the hyperparameters calculation.
 
-* Some of the results have been added with screenshots in our Results folder. Continue with further investigation for 
+* Some results have been added with screenshots in our Results folder. Continue with further investigation for 
 the best possible report matrix.
+
+### 2021-10-08
+* Today we built MLP model with the help of Gridsearch once again.
