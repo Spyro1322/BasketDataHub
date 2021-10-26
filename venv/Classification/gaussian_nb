@@ -59,7 +59,6 @@ y1_pred = gnb.predict(X_test)
 
 # comparing actual response values (y_test) with predicted response values (y_pred)
 print("Gaussian Naive Bayes model accuracy(in %):", accuracy_score(y1_test, y1_pred))
-# print(gnb.score(test, test_labels))
 print(f"These are the results for the model\n")
 print(classification_report(y1_test, y1_pred))
 

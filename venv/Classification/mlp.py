@@ -11,14 +11,19 @@ features1 = features1.dropna(axis=0)
 features2 = away_team
 features2 = features2.dropna(axis=0)
 
-# X_train, X_test, y_train, y1_test = train_test_split(features1, features1["HOME_TEAM_WINS"], test_size=0.40)
-X_valtrain, X_test, y_valtrain, y_test = train_test_split(features2, features2["HOME_TEAM_WINS"], test_size=0.3,
-                                                          random_state=78)
+train_data = features1.loc[(features1.SEASON <= 2013) & (features1.SEASON >= 2007)]
+valid_data = features1.loc[(features1.SEASON > 2013) & (features1.SEASON < 2016)]
+test_data = features1.loc[features1.SEASON >= 2016]
+full_train_data = pd.concat([train_data, valid_data], axis=0)
 
-# x_train,x_val,y_train,y_val=train_test_split(x_valtrain,y_valtrain,test_size=0.2,random_state=2021)
+X, y = train_data.drop(columns=['HOME_TEAM_WINS']), train_data.HOME_TEAM_WINS
+valid_X, valid_y = valid_data.drop(columns=['HOME_TEAM_WINS']), valid_data.HOME_TEAM_WINS
+test_X, test_y = test_data.drop(columns=['HOME_TEAM_WINS']), test_data.HOME_TEAM_WINS
+
+X_train, X_test, y_train, y_test = train_test_split(train_data, test_data, test_size=0.40)
 
 # Split Data to Train and Validation
-X_train, X_val, y_train, y_val = train_test_split(X_valtrain, y_valtrain, train_size=0.7, random_state=78)
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=8)
 
 # Multilayer Perceptron
 model = MLPClassifier()
