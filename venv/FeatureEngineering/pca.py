@@ -1,16 +1,10 @@
-from textwrap import wrap
 
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FuncFormatter
 from sklearn.decomposition import PCA
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report, log_loss, roc_auc_score
-from utilities import get_season_data, pca_plots
+
+from utilities import get_season_data
 
 pd.set_option('display.max_columns', None)
 
