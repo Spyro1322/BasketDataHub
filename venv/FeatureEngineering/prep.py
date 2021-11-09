@@ -77,3 +77,8 @@ games_short = games_short.loc[
     (games_short.GAME_DATE_EST > games_short.FIRST_GAME) & (games_short.GAME_DATE_EST <= games_short.LAST_GAME)]
 games_short.drop(columns=['SEASON_ID', 'FIRST_GAME', 'LAST_GAME'], inplace=True)
 games_short.sort_values('GAME_DATE_EST', inplace=True)
+
+# Missing players
+missing_players = details.groupby(['GAME_ID', 'TEAM_ID'], as_index=False)['COMMENT'].agg(
+    lambda x: ((x.notnull()) & (~x.str.contains('coach', case=False, na=False))).sum())
+missing_players.rename(columns={'COMMENT': 'MISSING_PLAYERS'}, inplace=True)

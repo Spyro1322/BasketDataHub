@@ -1,26 +1,8 @@
-import adjustText
 import numpy as np
 import pandas as pd
-import re
-import warnings
 
-import pip
-import seaborn as sn
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FuncFormatter
-from adjustText import adjust_text
-from textwrap import wrap
 
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import Pipeline
-from sklearn.feature_selection import SelectKBest, f_classif, SelectFromModel
-
-from sklearn.metrics import classification_report, log_loss, roc_auc_score
 
 from prep import games, teams
 
