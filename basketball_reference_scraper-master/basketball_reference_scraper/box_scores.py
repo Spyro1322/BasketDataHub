@@ -12,7 +12,7 @@ except:
     from basketball_reference_scraper.utils import get_game_suffix, remove_accents
     from basketball_reference_scraper.players import get_stats
 
-def get_box_scores(date, team1, team2, period='GAME', stat_type='BASIC'):
+def get_box_scores(date, team1, team2, period='GAME', stat_type='ADVANCED'):
     date = pd.to_datetime(date)
     suffix = get_game_suffix(date, team1, team2).replace('/', '%2F')
     r1 = get(f'https://widgets.sports-reference.com/wg.fcgi?css=1&site=bbr&url={suffix}&div=div_box-{team1}-{period.lower()}-{stat_type.lower()}')
