@@ -1,6 +1,7 @@
 import pandas as pd
 
 team_stats = pd.read_csv('../Data/games.csv')
+new_data = pd.read_csv('../Data/input_data.csv')
 
 players_stats_cols = {
     'FGM': 'Field Goals Made',
@@ -41,3 +42,9 @@ away_team = team_stats.drop(
     columns=["GAME_DATE_EST", "GAME_ID", "GAME_STATUS_TEXT", "HOME_TEAM_ID", "VISITOR_TEAM_ID",
              "TEAM_ID_home", "TEAM_ID_away", "PTS_home", "FG_PCT_home", "FT_PCT_home", "FG3_PCT_home", "AST_home",
              "REB_home"])
+
+home_data = new_data.drop(
+    columns=['GAME_ID', 'SEASON', 'GAME_DATE_EST', 'SEASON', 'CONFERENCE_VISITOR', 'TEAM_VISITOR', 'G_VISITOR', 'W_VISITOR',
+             'L_VISITOR', 'HOME_W_VISITOR', 'HOME_L_VISITOR', 'AWAY_W_VISITOR', 'AWAY_L_VISITOR', 'TOP_PLAYERS_VISITOR',
+             'EFF_VISITOR', 'HG_7days_VISITOR', 'AG_7days_VISITOR', 'G_7days_VISITOR', 'BACK2BACK_VISITOR', 'MISSING_PLAYERS_VISITOR',
+             'VISITOR_ELO'])

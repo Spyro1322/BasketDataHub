@@ -82,3 +82,5 @@ games_short.sort_values('GAME_DATE_EST', inplace=True)
 missing_players = details.groupby(['GAME_ID', 'TEAM_ID'], as_index=False)['COMMENT'].agg(
     lambda x: ((x.notnull()) & (~x.str.contains('coach', case=False, na=False))).sum())
 missing_players.rename(columns={'COMMENT': 'MISSING_PLAYERS'}, inplace=True)
+
+# print(games)

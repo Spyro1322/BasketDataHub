@@ -1,0 +1,8 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from helpers import home_data
+
+plt.figure(figsize=(20, 18))
+ax = sns.heatmap(data=home_data.corr(), cmap='coolwarm', annot=True)
+plt.show()
