@@ -312,3 +312,14 @@ the best possible report matrix.
 
 ### 2021-10-08
 * Today we built MLP model with the help of Gridsearch once again.
+
+## Feature Engineering
+
+### 2021-11-11
+* Trying to build new dataframes with more attributes and more useful information to train our
+models.
+
+* Made new_df.csv with ELO, Team Fatigue, Missing Players, Player Efficiency Rating.
+
+* Next goal is to add attributes regarding the averages of team stats from last **_n_** games. Then we will be ready 
+for our feature selection using known metrics such as pearson r, X-square etc.

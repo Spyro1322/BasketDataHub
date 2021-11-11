@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 from FeatureEngineering.elo_rating import elo_data, teams_dict
 from FeatureEngineering.per import top_players_per_game, pge
@@ -56,33 +55,36 @@ input_data['HOME_TEAM'] = input_data['HOME_TEAM_ID'].map(teams_dict)
 input_data['VISITOR_TEAM'] = input_data['VISITOR_TEAM_ID'].map(teams_dict)
 
 input_data = input_data.drop(
-    columns=['HOME_TEAM_ID', 'VISITOR_TEAM_ID', 'TEAM_ID', 'TEAM', 'TEAM_ID_x', 'TEAM_ID_y', 'STANDINGSDATE',
-             'TEAM_VISITOR', 'STANDINGSDATE_VISITOR'])
+    columns=['HOME_TEAM_ID', 'VISITOR_TEAM_ID', 'TEAM_ID', 'HOME_TEAM', 'TEAM_ID_x', 'TEAM_ID_y', 'STANDINGSDATE',
+             'VISITOR_TEAM', 'STANDINGSDATE_VISITOR'])
 input_data['ELO_DIFF'] = input_data.HOME_ELO - input_data.VISITOR_ELO
 input_data['TOP_PLAYER_DIFF'] = input_data.TOP_PLAYERS - input_data.TOP_PLAYERS_VISITOR
 input_data['MISSING_PLAYER_DIFF'] = input_data.MISSING_PLAYERS - input_data.MISSING_PLAYERS_VISITOR
 input_data['EFF_DIFF'] = input_data.EFF - input_data.EFF_VISITOR
 input_data['MONTH'] = input_data.GAME_DATE_EST.dt.month
 
-input_data.drop(columns=['HOME_TEAM', 'VISITOR_TEAM', 'CONFERENCE', 'CONFERENCE_VISITOR', 'GAME_DATE_EST'],
-                inplace=True)
+# input_data.drop(columns=['CONFERENCE', 'CONFERENCE_VISITOR'],
+#                 inplace=True)
+
+# print(input_data)
+input_data.to_csv('../Data/input_data1.csv')
 
 
-# given a team and a date, this method will return that teams average stats over the previous n games
-def get_avg_stats_last_n_games(team, game_date, season_team_stats, n):
-    prev_game_df = season_team_stats[season_team_stats['Date'] < game_date][
-        (season_team_stats['H_Team'] == team) | (season_team_stats['A_Team'] == team)].sort_values(by='Date').tail(n)
-
-    h_df = prev_game_df.iloc[:, range(3, 43, 2)]
-    h_df.columns = [x[2:] for x in h_df.columns]
-    a_df = prev_game_df.iloc[:, range(4, 44, 2)]
-    a_df.columns = [x[2:] for x in a_df.columns]
-
-    df = pd.concat([h_df, a_df])
-    df = df[df['Team'] == team]
-    df.drop(columns=['Team'], inplace=True)
-
-    return df.mean()
+# Given a team and a date, this method will return that teams average stats over the previous n games
+# def get_avg_stats_last_n_games(team, game_date, season_team_stats, n):
+#     prev_game_df = season_team_stats[season_team_stats['Date'] < game_date][
+#         (season_team_stats['H_Team'] == team) | (season_team_stats['A_Team'] == team)].sort_values(by='Date').tail(n)
+#
+#     h_df = prev_game_df.iloc[:, range(3, 43, 2)]
+#     h_df.columns = [x[2:] for x in h_df.columns]
+#     a_df = prev_game_df.iloc[:, range(4, 44, 2)]
+#     a_df.columns = [x[2:] for x in a_df.columns]
+#
+#     df = pd.concat([h_df, a_df])
+#     df = df[df['Team'] == team]
+#     df.drop(columns=['Team'], inplace=True)
+#
+#     return df.mean()
 
 # train_data = input_data.loc[(input_data.SEASON < 2018) & (input_data.SEASON > 2005)]
 # valid_data = input_data.loc[input_data.SEASON == 2018]
@@ -102,4 +104,3 @@ def get_avg_stats_last_n_games(team, game_date, season_team_stats, n):
 # X.drop(columns=['SEASON', 'GAME_ID'], inplace=True)
 # valid_X.drop(columns=['SEASON', 'GAME_ID'], inplace=True)
 # test_X.drop(columns=['SEASON', 'GAME_ID'], inplace=True)
-
