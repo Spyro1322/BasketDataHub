@@ -44,7 +44,12 @@ away_team = team_stats.drop(
              "REB_home"])
 
 home_data = new_data.drop(
-    columns=['GAME_ID', 'SEASON', 'GAME_DATE_EST', 'SEASON', 'CONFERENCE_VISITOR', 'TEAM_VISITOR', 'G_VISITOR', 'W_VISITOR',
-             'L_VISITOR', 'HOME_W_VISITOR', 'HOME_L_VISITOR', 'AWAY_W_VISITOR', 'AWAY_L_VISITOR', 'TOP_PLAYERS_VISITOR',
-             'EFF_VISITOR', 'HG_7days_VISITOR', 'AG_7days_VISITOR', 'G_7days_VISITOR', 'BACK2BACK_VISITOR', 'MISSING_PLAYERS_VISITOR',
-             'VISITOR_ELO'])
+    columns=['GAME_ID', 'SEASON', 'GAME_DATE_EST', 'SEASON1', 'HOME_TEAM_WINS', 'CONFERENCE_VISITOR', 'TEAM_VISITOR',
+             'G_VISITOR', 'W_VISITOR', 'L_VISITOR', 'HOME_W_VISITOR', 'HOME_L_VISITOR', 'AWAY_W_VISITOR',
+             'AWAY_L_VISITOR', 'TOP_PLAYERS_VISITOR', 'EFF_VISITOR', 'HG_7days_VISITOR', 'AG_7days_VISITOR',
+             'G_7days_VISITOR', 'BACK2BACK_VISITOR', 'MISSING_PLAYERS_VISITOR', 'VISITOR_ELO'])
+
+away_data = new_data.drop(
+    columns=['GAME_ID', 'SEASON', 'GAME_DATE_EST', 'SEASON1', 'HOME_TEAM_WINS', 'G', 'W', 'L', 'HOME_W', 'HOME_L',
+             'AWAY_W', 'AWAY_L', 'TOP_PLAYERS', 'EFF', 'HG_7days', 'AG_7days', 'G_7days', 'BACK2BACK',
+             'MISSING_PLAYERS', 'HOME_ELO'])

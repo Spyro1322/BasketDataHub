@@ -1,8 +1,21 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from helpers import home_data
+from helpers import home_data, away_data
 
-plt.figure(figsize=(20, 18))
-ax = sns.heatmap(data=home_data.corr(), cmap='coolwarm', annot=True)
-plt.show()
+def heat_corr(choice=True):
+    if choice:
+        # Choose home teams' stats.
+        plt.figure(figsize=(20, 18))
+        sns.heatmap(data=home_data.corr(), cmap='coolwarm', annot=True)
+        plt.show()
+
+    else:
+        # Choose away teams' stats.
+        plt.figure(figsize=(20, 18))
+        sns.heatmap(data=away_data.corr(), cmap='coolwarm', annot=True)
+        plt.show()
+
+heat_corr(choice=False)
+
+

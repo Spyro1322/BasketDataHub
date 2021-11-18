@@ -1,9 +1,6 @@
-import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 from sklearn import neighbors
 from sklearn.preprocessing import StandardScaler

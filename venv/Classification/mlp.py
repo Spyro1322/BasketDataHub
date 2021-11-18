@@ -1,7 +1,3 @@
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import classification_report
-from sklearn.neural_network import MLPClassifier
-import time
 from helpers import *
 
 features1 = home_team
