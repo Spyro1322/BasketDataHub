@@ -55,13 +55,13 @@ input_data['HOME_TEAM'] = input_data['HOME_TEAM_ID'].map(teams_dict)
 input_data['VISITOR_TEAM'] = input_data['VISITOR_TEAM_ID'].map(teams_dict)
 
 input_data = input_data.drop(
-    columns=['HOME_TEAM_ID', 'VISITOR_TEAM_ID', 'TEAM_ID', 'HOME_TEAM', 'TEAM_ID_x', 'TEAM_ID_y', 'STANDINGSDATE',
-             'VISITOR_TEAM', 'STANDINGSDATE_VISITOR'])
+    columns=['HOME_TEAM_ID', 'VISITOR_TEAM_ID', 'TEAM_ID', 'TEAM', 'TEAM_ID_x', 'TEAM_ID_y', 'STANDINGSDATE',
+             'TEAM_VISITOR', 'STANDINGSDATE_VISITOR'])
 input_data['ELO_DIFF'] = input_data.HOME_ELO - input_data.VISITOR_ELO
 input_data['TOP_PLAYER_DIFF'] = input_data.TOP_PLAYERS - input_data.TOP_PLAYERS_VISITOR
 input_data['MISSING_PLAYER_DIFF'] = input_data.MISSING_PLAYERS - input_data.MISSING_PLAYERS_VISITOR
 input_data['EFF_DIFF'] = input_data.EFF - input_data.EFF_VISITOR
 input_data['MONTH'] = input_data.GAME_DATE_EST.dt.month
 
-# print(input_data)
-# input_data.to_csv('../Data/input_data1.csv')
+print(input_data)
+input_data.to_csv('../Data/input_data1.csv')
