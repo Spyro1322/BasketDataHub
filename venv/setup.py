@@ -31,7 +31,8 @@ setup(
             'DataVisualization=DataVisualization.3pt_significance:threes_study',
             'DataVisualization=DataVisualization.express&go:compare_players',
             'Classification=Classification.dummy&gaussian_nb:team_dummy',
-            'FeatureEngineering=FeatureEngineering.per:get_top_players_season'
+            'FeatureEngineering=FeatureEngineering.per:get_top_players_season',
+            'FeatureEngineering=FeatureEngineering.data_cleaning:plot_heatmap'
         ],
     },
 )
