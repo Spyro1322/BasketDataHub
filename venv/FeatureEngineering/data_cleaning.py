@@ -23,17 +23,17 @@ differences_in_avgs = pd.read_csv('MetaData/differences.csv')
 @click.option('--diffs', '-d')
 def plot_heatmap(home, away, diffs):
     if home:
-        plt.figure(figsize=(20, 15))
+        plt.figure(figsize=(20, 18))
         sns.heatmap(data=home_team_stats.corr(), cmap='coolwarm', annot=True)
         plt.show()
 
     elif away:
-        plt.figure(figsize=(20, 15))
+        plt.figure(figsize=(20, 18))
         sns.heatmap(data=away_team_stats.corr(), cmap='coolwarm', annot=True)
         plt.show()
 
     elif diffs:
-        plt.figure(figsize=(20, 15))
+        plt.figure(figsize=(20, 18))
         sns.heatmap(data=differences_in_avgs.corr(), cmap='coolwarm', annot=True)
         plt.show()
 
