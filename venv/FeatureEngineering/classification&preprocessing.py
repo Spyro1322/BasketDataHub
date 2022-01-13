@@ -4,7 +4,7 @@ import pandas as pd
 
 from sklearn.decomposition import PCA
 
-final_data = pd.read_csv("data2_2.csv")
+final_data = pd.read_csv('MetaData/data2_2.csv')
 
 features = final_data.drop(
     columns=["game_date_est", "game_id", "game_status_text", "home_team_id", "home_team", "visitor_team_id",
