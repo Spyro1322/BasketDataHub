@@ -34,8 +34,6 @@ print("")
 print(test_data.shape)
 print(testPCA.shape)
 
-# πλεόν οι διαστάση των χαρακτηριστικών είναι 25
-
 # Θα τυπωσουμε το συσσωρευτικό ποσοστό διασποράς που εξηγείται από τις κύριες συνιστώσες
 evar = pca.explained_variance_ratio_
 cum_evar = np.cumsum(evar)
