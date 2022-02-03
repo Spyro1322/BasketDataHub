@@ -323,3 +323,7 @@ models.
 
 * Next goal is to add attributes regarding the averages of team stats from last **_n_** games. Then we will be ready 
 for our feature selection using known metrics such as pearson r, X-square etc.
+
+### 2022-02-03
+* New year, new and some previous goals! Have to add some new attributes in our datasets and extract extra information.
+Let's go.
