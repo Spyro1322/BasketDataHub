@@ -327,3 +327,11 @@ for our feature selection using known metrics such as pearson r, X-square etc.
 ### 2022-02-03
 * New year, new and some previous goals! Have to add some new attributes in our datasets and extract extra information.
 Let's go.
+
+### 2022-02-07
+* Created team_records.py which calculates win/loss record for previous season, win percentages of every team for every
+3 and 7 games prior to the game we want.
+
+* To keep up with our machine learning models, we kept data from 2007-2008 season until the 2019-2020 season.
+
+* Combined games_formatted_07_20.csv with data3.csv
