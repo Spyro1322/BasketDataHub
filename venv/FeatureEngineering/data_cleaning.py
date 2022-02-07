@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 home_team_stats = pd.read_csv('MetaData/home_data.csv')
 away_team_stats = pd.read_csv('MetaData/away_data.csv')
-differences_in_avgs = pd.read_csv('MetaData/differences.csv')
+differences = pd.read_csv('MetaData/diffs_5_games.csv.csv')
 
 # We only keep game stats significant for our visualizations
 # and delete NaN values
@@ -34,7 +34,7 @@ def plot_heatmap(home, away, diffs):
 
     elif diffs:
         plt.figure(figsize=(20, 18))
-        sns.heatmap(data=differences_in_avgs.corr(), cmap='coolwarm', annot=True)
+        sns.heatmap(data=differences.corr(), cmap='coolwarm', annot=True)
         plt.show()
 
 
