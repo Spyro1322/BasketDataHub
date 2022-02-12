@@ -340,4 +340,4 @@ Let's go.
 * Extracted a json file with 1,2 odds for all matches since 2008-2009 from oddsportal. Converted it to a csv file named
 odds.csv .
 
-* Nextly, I want to merge this dataset with data5 in order to get the odds for each given match we already have.
+* Additionally, I want to merge this dataset with data5 in order to get the odds for each given match we already have.
