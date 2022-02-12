@@ -335,3 +335,9 @@ Let's go.
 * To keep up with our machine learning models, we kept data from 2007-2008 season until the 2019-2020 season.
 
 * Combined games_formatted_07_20.csv with data3.csv
+
+### 2022-02-12
+* Extracted a json file with 1,2 odds for all matches since 2008-2009 from oddsportal. Converted it to a csv file named
+odds.csv .
+
+* Nextly, I want to merge this dataset with data5 in order to get the odds for each given match we already have.
