@@ -11,8 +11,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
 
 # Read the data
-df = pd.read_csv('../Data/games_details.csv')
-seasons = pd.read_csv('../Data/games.csv')[["GAME_ID", "SEASON"]]
+df = pd.read_csv('../FeatureEngineering/MetaData/data5.csv')
 
 df.drop(["GAME_ID", "TEAM_ID", "PLAYER_ID"], axis=1).describe().transpose()
 df.drop_duplicates(subset=["GAME_ID", "PLAYER_ID"], keep="first", inplace=True)
