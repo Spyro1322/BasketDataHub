@@ -1,7 +1,7 @@
 # Feature Selection with Univariate Statistical Tests
 import pandas as pd
 import numpy as np
-from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import SelectKBest, mutual_info_classif
 from sklearn.feature_selection import f_classif, chi2
 
 from sklearn.model_selection import GridSearchCV, train_test_split
@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 # load data
 from sklearn.preprocessing import MinMaxScaler
 
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -41,7 +41,7 @@ X_train_scaler = scaled.transform(X_train)
 uni_model = SelectKBest()
 
 # Deploy GridSearch
-param_grid = {'score_func': [f_classif, chi2],
+param_grid = {'score_func': [mutual_info_classif, f_classif, chi2],
               'k': [5, 10, 20, 30]}
 
 uni_grid = GridSearchCV(uni_model, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1)

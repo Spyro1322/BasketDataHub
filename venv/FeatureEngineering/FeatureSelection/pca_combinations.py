@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -62,7 +62,7 @@ print(search.best_params_)
 pca.fit(X_train_scaler)
 df1 = pd.DataFrame(pca.components_, columns=X_train.columns)
 print(df1)
-df1.to_csv('pca_log_reg_stand_scaler.csv')
+df1.to_csv('pca_log_reg_stand_scaler_data6_&_odds.csv')
 
 # Plot the PCA spectrum
 

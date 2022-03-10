@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -37,14 +37,8 @@ X_train_scaler = scaled.transform(X_train)
 
 # Fit the model
 model = ExtraTreesClassifier(n_estimators=100)
-model.fit(X_train, y_train)
+model.fit(X_train_scaler, y_train)
 print(model.feature_importances_)
-
-# plot graph of feature importances
-# sorted_idx = model.feature_importances_.argsort()
-# plt.barh(df.columns[sorted_idx], model.feature_importances_[sorted_idx])
-# plt.xlabel("Random Forest Feature Importance")
-# plt.show()
 
 plt.figure(figsize=(20, 18))
 plt.title('Feature Importance of ExtraTreesClassifier', fontsize=30)

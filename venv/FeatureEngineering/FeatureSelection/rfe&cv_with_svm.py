@@ -11,7 +11,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.svm import SVC
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -46,7 +46,7 @@ min_features_to_select = 1  # Minimum number of features to consider
 rfecv = RFECV(
     estimator=svc,
     step=1,
-    cv=StratifiedKFold(2),
+    cv=StratifiedKFold(10),
     scoring="accuracy",
     min_features_to_select=min_features_to_select,
 )

@@ -6,12 +6,10 @@ from sklearn.feature_selection import RFE
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import GridSearchCV, train_test_split
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.svm import SVC
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]

@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -49,19 +49,19 @@ sfs_forward = SequentialFeatureSelector(
 ).fit(X_train_scaler, y_train)
 toc_fwd = time()
 
-# tic_bwd = time()
-# sfs_backward = SequentialFeatureSelector(
-#     ridge, n_features_to_select=50, direction="backward"
-# ).fit(X, y)
-# toc_bwd = time()
+tic_bwd = time()
+sfs_backward = SequentialFeatureSelector(
+    ridge, n_features_to_select=50, direction="backward"
+).fit(X_train_scaler, y_train)
+toc_bwd = time()
 
 print(
     "Features selected by forward sequential selection: "
     f"{feature_names[sfs_forward.get_support()]}"
 )
-# print(f"Done in {toc_fwd - tic_fwd:.3f}s")
-# print(
-#     "Features selected by backward sequential selection: "
-#     f"{feature_names[sfs_backward.get_support()]}"
-# )
-# print(f"Done in {toc_bwd - tic_bwd:.3f}s")
+print(f"Done in {toc_fwd - tic_fwd:.3f}s")
+print(
+    "Features selected by backward sequential selection: "
+    f"{feature_names[sfs_backward.get_support()]}"
+)
+print(f"Done in {toc_bwd - tic_bwd:.3f}s")

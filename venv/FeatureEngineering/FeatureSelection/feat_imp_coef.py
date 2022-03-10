@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # load data
-df = pd.read_csv('../MetaData/data6.csv')
+df = pd.read_csv('../MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
@@ -39,9 +39,6 @@ X_train_scaler = scaled.transform(X_train)
 ridge = RidgeCV(alphas=np.logspace(-6, 6, num=50)).fit(X_train_scaler, y_train)
 importance = np.abs(ridge.coef_)
 feature_names = np.array(X_train.columns)
-# plt.bar(height=importance, x=feature_names)
-# plt.title("Feature importances via coefficients")
-# plt.show()
 
 threshold = np.sort(importance)[-50] + 0.01
 
