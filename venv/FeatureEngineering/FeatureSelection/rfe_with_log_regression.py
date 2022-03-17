@@ -39,3 +39,6 @@ rfe.fit(X_train, y_train)
 print("Num Features: %d" % rfe.n_features_)
 print("Selected Features: %s" % rfe.support_)
 print("Feature Ranking: %s" % rfe.ranking_)
+selected_feat = X_train.columns[(rfe.get_support())]
+len(selected_feat)
+print(selected_feat)
