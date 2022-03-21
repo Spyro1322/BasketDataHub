@@ -36,11 +36,11 @@ for season in seasons['season'].unique():
         h_team = row['home_team']
         a_team = row['visitor_team']
 
-        h_team_recent_performance = get_avg_stats_last_n_games(h_team, game_date, season_team_stats, 10)
-        h_team_recent_performance.index = ['Home_Last_10_Avg_' + x for x in h_team_recent_performance.index]
+        h_team_recent_performance = get_avg_stats_last_n_games(h_team, game_date, season_team_stats, 5)
+        h_team_recent_performance.index = ['Home_Last_5_Avg_' + x for x in h_team_recent_performance.index]
 
-        a_team_recent_performance = get_avg_stats_last_n_games(a_team, game_date, season_team_stats, 10)
-        a_team_recent_performance.index = ['Away_Last_10_Avg_' + x for x in a_team_recent_performance.index]
+        a_team_recent_performance = get_avg_stats_last_n_games(a_team, game_date, season_team_stats, 5)
+        a_team_recent_performance.index = ['Away_Last_5_Avg_' + x for x in a_team_recent_performance.index]
 
         new_row = pd.concat([h_team_recent_performance, a_team_recent_performance], sort=False)
         new_row['game_id'] = game_id
