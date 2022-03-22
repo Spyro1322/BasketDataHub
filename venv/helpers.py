@@ -53,3 +53,51 @@ away_data = new_data.drop(
     columns=['GAME_ID', 'SEASON', 'GAME_DATE_EST', 'SEASON1', 'HOME_TEAM_WINS', 'G', 'W', 'L', 'HOME_W', 'HOME_L',
              'AWAY_W', 'AWAY_L', 'TOP_PLAYERS', 'EFF', 'HG_7days', 'AG_7days', 'G_7days', 'BACK2BACK',
              'MISSING_PLAYERS', 'HOME_ELO'])
+
+
+sfs_forward_data = ['num_possible_outcomes','score_home','score_away','HG_7days_VISITOR','Home_Last_5_Avg_PTS_home',
+'Home_Last_5_Avg_FG3_PCT_home','Home_Last_5_Avg_FG3_PCT_away','Home_Last_5_Avg_AST_home','Away_Last_5_Avg_FG3_PCT_home',
+'Away_Last_5_Avg_FG_PCT_home','Away_Last_5_Avg_FG_PCT_away','Away_Last_5_Avg_PTS_home','Away_Last_5_Avg_AST_away',
+'Away_Last_5_Avg_REB_home','Away_Last_5_Avg_REB_away','odds_away','diff_avg_pts_home','diff_avg_fg3_pct_away',
+'diff_avg_reb_home','G_home','HOME_RECORD_away','WIN_PRCT_home_3g','PTS_home_3g','FT_PCT_home_3g','REB_home_3g',
+'PTS_away_3g','FG_PCT_away_3g','FG3_PCT_away_3g','WIN_PRCT_home_7g','PTS_home_7g','FT_PCT_home_7g','AST_home_7g','REB_home_7g',
+'PTS_away_7g','FG_PCT_away_7g','FT_PCT_away_7g','FG3_PCT_away_7g','REB_away_7g','diff_avg_fg3_pct_home','diff_avg_ft_pct_home',
+'diff_avg_ft_pct_away','top_players_visitor','eff','missing_players_diff','month','diff_pts_last_3_games','diff_ft_pct_last_7_games',
+'diff_ast_last_3_games','diff_reb_last_7_games','diff_win_pct_prev_season','diff_curr_win_pct','diff_curr_away_record']
+
+sfs_backward_data = ['num_possible_outcomes','score_home','score_away','G_7days','HG_7days','AG_7days','HG_7days_VISITOR',
+'Home_Last_5_Avg_FG_PCT_home','Home_Last_5_Avg_FT_PCT_home','Home_Last_5_Avg_FG3_PCT_home','Home_Last_5_Avg_REB_away',
+'Away_Last_5_Avg_FG3_PCT_home','Away_Last_5_Avg_FT_PCT_home','Away_Last_5_Avg_FG_PCT_away','Away_Last_5_Avg_PTS_home',
+'Away_Last_5_Avg_AST_away','Away_Last_5_Avg_REB_away','HOME_RECORD_away','HOME_RECORD_home','ROAD_RECORD_away','HOME_RECORD_prev_home',
+'HOME_RECORD_prev_away','FG3_PCT_home_3g','FT_PCT_home_7g',
+'REB_home_7g','diff_avg_fg_pct_home','diff_avg_reb_away','top_players',
+'FT_PCT_away_7g','REB_away_7g','diff_avg_fg3_pct_home','diff_avg_ft_pct_home',
+'top_players_visitor','eff','eff_visitor','eff_diff','missing_player_diff','month','diff_pts_last_3_games',
+'diff_ft_pct_last_7_games','missing_players','missing_players_visitor','top_player_diff','diff_fg3_pct_last_3_games','diff_ast_last_7_games',
+'diff_ast_last_3_games','diff_reb_last_7_games','diff_win_pct_prev_season','diff_road_record_last_season','diff_curr_home_record']
+
+rfe_data = ['num_possible_outcomes', 'odds_home', 'odds_away', 'score_home',
+       'score_away', 'G_home', 'W_PCT_home', 'HOME_RECORD_home',
+       'ROAD_RECORD_home', 'G_away', 'W_PCT_away', 'ROAD_RECORD_away',
+       'W_PCT_prev_home', 'ROAD_RECORD_prev_home', 'W_PCT_prev_away',
+       'HOME_RECORD_prev_away', 'ROAD_RECORD_prev_away', 'AST_home_3g',
+       'REB_home_3g', 'WIN_PRCT_away_3g', 'PTS_away_3g', 'FG3_PCT_away_3g',
+       'AST_home_7g', 'REB_home_7g', 'PTS_away_7g', 'AST_away_7g',
+       'diff_avg_pts_home', 'diff_avg_pts_away', 'diff_avg_ast_home',
+       'diff_avg_fg3_pct_home', 'diff_avg_reb_home', 'diff_avg_reb_away',
+       'top_players', 'HG_7days', 'AG_7days', 'G_7days', 'HG_7days_VISITOR',
+       'back2back_visitor', 'missing_players', 'missing_players_visitor',
+       'top_player_diff', 'missing_player_diff', 'month',
+       'Home_Last_5_Avg_AST_home', 'Home_Last_5_Avg_REB_home',
+       'Home_Last_5_Avg_PTS_away', 'Home_Last_5_Avg_FT_PCT_away',
+       'Home_Last_5_Avg_REB_away', 'Home_Last_5_Avg_AST_away',
+       'Away_Last_5_Avg_REB_home', 'Away_Last_5_Avg_REB_away',
+       'Away_Last_5_Avg_AST_away', 'diff_pts_last_3_games',
+       'diff_fg3_pct_last_3_games', 'diff_ft_pct_last_3_games',
+       'diff_ast_last_3_games', 'diff_ast_last_7_games',
+       'diff_reb_last_7_games', 'diff_win_pct_3_last_games',
+       'diff_curr_win_pct', 'diff_curr_home_record']
+
+extra_trees_data = ['score_home','score_away','odds_home','odds_away','home_elo','visitor_elo','elo_diff','eff_diff','eff_visitor',
+'diff_home_record_last_season','ROAD_RECORD_away','ROAD_RECORD_home','diff_road_record_last_season','diff_win_pct_prev_season','W_PCT_home',
+'W_PCT_away','diff_curr_away_record','HOME_RECORD_home','diff_curr_home_record','diff_curr_win_pct']
