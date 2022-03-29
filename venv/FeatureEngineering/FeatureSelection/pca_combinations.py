@@ -28,10 +28,10 @@ y1 = df["home_team_wins"]
 
 
 # Split our data
-X_train, X_test, y_train, y_test = train_test_split(X1, y1, test_size=0.4)
+X_train, y_train = X1, y1
 
 # Split Data to Train and Validation
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=1)
+# X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=1)
 
 
 # Define a pipeline to search for the best combination of PCA truncation
@@ -60,40 +60,40 @@ print("Best parameter (CV score=%0.3f):" % search.best_score_)
 print(search.best_params_)
 
 pca.fit(X_train_scaler)
-df1 = pd.DataFrame(pca.components_, columns=X_train.columns)
-print(df1)
-df1.to_csv('pca_log_reg_stand_scaler_data6_&_odds.csv')
+# df1 = pd.DataFrame(pca.components_, columns=X_train.columns)
+# print(df1)
+# df1.to_csv('pca_log_reg_stand_scaler_data6_&_odds.csv')
 
 # Plot the PCA spectrum
 
-fig, (ax0, ax1) = plt.subplots(nrows=2, sharex=True, figsize=(6, 6))
-ax0.plot(
-    np.arange(1, pca.n_components_ + 1), pca.explained_variance_ratio_, "+", linewidth=2
-)
-ax0.set_ylabel("PCA explained variance ratio")
-
-ax0.axvline(
-    search.best_estimator_.named_steps["pca"].n_components,
-    linestyle=":",
-    label="n_components chosen",
-)
-
-ax0.legend(prop=dict(size=12))
-
-# For each number of components, find the best classifier results
-results = pd.DataFrame(search.cv_results_)
-components_col = "param_pca__n_components"
-best_clfs = results.groupby(components_col).apply(
-    lambda g: g.nlargest(1, "mean_test_score")
-)
-
-best_clfs.plot(
-    x=components_col, y="mean_test_score", yerr="std_test_score", legend=False, ax=ax1
-)
-ax1.set_ylabel("Classification accuracy (val)")
-ax1.set_xlabel("n_components")
-
-plt.xlim(-1, 70)
-
-plt.tight_layout()
-plt.show()
+# fig, (ax0, ax1) = plt.subplots(nrows=2, sharex=True, figsize=(6, 6))
+# ax0.plot(
+#     np.arange(1, pca.n_components_ + 1), pca.explained_variance_ratio_, "+", linewidth=2
+# )
+# ax0.set_ylabel("PCA explained variance ratio")
+#
+# ax0.axvline(
+#     search.best_estimator_.named_steps["pca"].n_components,
+#     linestyle=":",
+#     label="n_components chosen",
+# )
+#
+# ax0.legend(prop=dict(size=12))
+#
+# # For each number of components, find the best classifier results
+# results = pd.DataFrame(search.cv_results_)
+# components_col = "param_pca__n_components"
+# best_clfs = results.groupby(components_col).apply(
+#     lambda g: g.nlargest(1, "mean_test_score")
+# )
+#
+# best_clfs.plot(
+#     x=components_col, y="mean_test_score", yerr="std_test_score", legend=False, ax=ax1
+# )
+# ax1.set_ylabel("Classification accuracy (val)")
+# ax1.set_xlabel("n_components")
+#
+# plt.xlim(-1, 70)
+#
+# plt.tight_layout()
+# plt.show()

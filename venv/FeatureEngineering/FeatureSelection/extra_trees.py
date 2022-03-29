@@ -26,10 +26,10 @@ X1 = df.drop(
 y1 = df["home_team_wins"]
 
 # Split our data
-X_train, X_test, y_train, y_test = train_test_split(X1, y1, test_size=0.4)
+X_train, y_train = X1, y1
 
 # Split Data to Train and Validation
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=1)
+# X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=1)
 
 scaled = MinMaxScaler()
 scaled.fit(X_train)
