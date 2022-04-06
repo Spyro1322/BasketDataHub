@@ -62,8 +62,8 @@ extra_trees_data = ['odds_home', 'odds_away', 'home_elo', 'visitor_elo', 'elo_di
                     'W_PCT_away', 'W_PCT_prev_away', 'diff_curr_away_record', 'HOME_RECORD_home', 'diff_curr_home_record',
                     'diff_curr_win_pct']
 
-feat_imp_coef_data = ['odds_home' 'odds_away' 'eff_visitor' 'home_elo' 'elo_diff' 'eff_diff']
+feat_imp_coef_data = ['odds_home', 'odds_away', 'eff_visitor', 'home_elo', 'elo_diff', 'eff_diff']
 
-lasso_data = ['elo_diff' 'odds_away' 'odds_home' 'eff_diff' 'eff_visitor'
-              'missing_players' 'top_players' 'FT_PCT_home_7g' 'diff_avg_reb_away'
+lasso_data = ['elo_diff', 'odds_away', 'odds_home', 'eff_diff', 'eff_visitor',
+              'missing_players', 'top_players', 'FT_PCT_home_7g', 'diff_avg_reb_away',
               'home_elo']
