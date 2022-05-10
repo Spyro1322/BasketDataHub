@@ -54,7 +54,9 @@ visitor_win_col = elo_data.columns.get_loc('VISITOR_WIN_PR')
 for i in range(len(elo_data)):
     if elo_data.iloc[i, elo_data.columns.get_loc('SEASON')] != current_season:
         team_elo_l.append(team_elo.sort_values(by='ELO', ascending=False).head(5).assign(SEASON=current_season))
-        team_elo['ELO'] = 0.75 * team_elo.ELO + 0.25 * 1500  # Reverting back to the mean for the start of each season
+
+        # Reverting back to the three-quarters for the start of each season
+        team_elo['ELO'] = (0.75 * team_elo.ELO) + (0.25 * 1500)
         current_season = elo_data.iloc[i, elo_data.columns.get_loc('SEASON')]
 
     elo_data.iloc[i, home_elo_col] = team_elo.loc[team_elo.TEAM == elo_data.iloc[i, home_team_col], 'ELO'].values + 100
