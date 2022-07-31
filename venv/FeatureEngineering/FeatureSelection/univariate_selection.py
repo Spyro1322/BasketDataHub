@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 # load data
 from sklearn.preprocessing import MinMaxScaler
 
-df = pd.read_csv('../MetaData/data6_&_odds.csv')
+df = pd.read_csv('FeatureEngineering\MetaData\data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]

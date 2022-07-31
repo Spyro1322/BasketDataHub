@@ -43,11 +43,11 @@ ridge = RidgeCV(alphas=np.logspace(-6, 6, num=50)).fit(X_train_scaler, y_train)
 importance = np.abs(ridge.coef_)
 feature_names = np.array(X_train.columns)
 
-# tic_fwd = time()
-# sfs_forward = SequentialFeatureSelector(
-#     ridge, n_features_to_select=50, direction="forward"
-# ).fit(X_train_scaler, y_train)
-# toc_fwd = time()
+tic_fwd = time()
+sfs_forward = SequentialFeatureSelector(
+    ridge, n_features_to_select=50, direction="forward"
+).fit(X_train_scaler, y_train)
+toc_fwd = time()
 
 tic_bwd = time()
 sfs_backward = SequentialFeatureSelector(
@@ -55,11 +55,12 @@ sfs_backward = SequentialFeatureSelector(
 ).fit(X_train_scaler, y_train)
 toc_bwd = time()
 
-# print(
-#     "Features selected by forward sequential selection: "
-#     f"{feature_names[sfs_forward.get_support()]}"
-# )
-# print(f"Done in {toc_fwd - tic_fwd:.3f}s")
+print(
+    "Features selected by forward sequential selection: "
+    f"{feature_names[sfs_forward.get_support()]}"
+)
+print(f"Done in {toc_fwd - tic_fwd:.3f}s")
+
 print(
     "Features selected by backward sequential selection: "
     f"{feature_names[sfs_backward.get_support()]}"

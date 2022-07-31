@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
 # load data
-df = pd.read_csv('../MetaData/data6_&_odds.csv')
+df = pd.read_csv('FeatureEngineering/MetaData/data6_&_odds.csv')
 df.dropna(inplace=True)
 
 train_data = df.loc[(df.season <= 2013) & (df.season >= 2007)]
