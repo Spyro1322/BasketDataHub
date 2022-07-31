@@ -1,0 +1,7 @@
+Features selected by forward sequential selection: ['odds_home' 'odds_away' 'W_PCT_prev_home' 'diff_avg_reb_away'
+ 'top_players' 'eff_visitor' 'back2back_visitor' 'elo_diff'
+ 'missing_player_diff' 'eff_diff']
+Done in 142.555s
+Features selected by backward sequential selection: ['odds_home' 'odds_away' 'FG3_PCT_away_3g' 'top_players' 'eff_visitor'
+ 'back2back_visitor' 'home_elo' 'elo_diff' 'missing_player_diff'
+ 'Away_Last_5_Avg_FG3_PCT_home']
