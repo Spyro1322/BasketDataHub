@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 home_team_stats = pd.read_csv('MetaData/home_data.csv')
 away_team_stats = pd.read_csv('MetaData/away_data.csv')
-differences = pd.read_csv('MetaData/diffs_5_games.csv.csv')
+differences = pd.read_csv('MetaData/diffs_5_games')
 
 # We only keep game stats significant for our visualizations
 # and delete NaN values
